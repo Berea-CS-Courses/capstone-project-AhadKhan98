@@ -25,3 +25,23 @@ Anticipated Features:
 - An incentive system for helpers to provide accurate solutions.
 
 # Requirements
+
+Functional Requirements:
+
+- Should keep track of state to auto render components that need updating.
+- Should automatically log the user in if they already have an account.
+- Should provide users with the option to switch between two modes, 'helper' and 'helpee'.
+- Should provide a wide range of technologies to choose from.
+- Should store all pending users that need to be matched in a queue.
+- Should create a chat room that only the matched pair can access.
+- Should have the functionality to share images, videos and audio files in chat rooms.
+- Should keep track of all previous questions for the helpee.
+- Should keep track of all previous solutions for the helper.
+- Should store all the data in a database.
+
+Non-Functional Requirements:
+
+- Should run on all modern browsers that support JavaScript.
+- Should have a responsive mobile design.
+- Should ensure only authorized users can access certain pages.
+- Should have a minimalistic and easy-to-use user interface.
