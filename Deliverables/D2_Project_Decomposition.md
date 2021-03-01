@@ -43,6 +43,40 @@
 **Requirements:** In order to make this component work, a library known as socket.io will be used. This will provide real-time socket management and the ability for users to send, receive messages instantly.  
 **Importance:** This is an important part of the system. Once the users are matched together, they will need a place where they can talk to each other, discuss the problem and come up with a solution together. This component provides just that.
 
-# Section 3: Breaking Up Components
+# Section 3 & 4: Breaking Up Components & Prioritization
 
-# Section 4: Prioritization
+- <ins>Front-End UI</ins>
+  - Logged out user view
+    - Landing Page
+    - Registration prompts
+    - Footer
+  - Logged in user view
+    - Navbar
+    - Toggle button (switch between helper and helpee)
+    - Tech Icons
+    - Footer
+  - Matching screen
+  - Chat room
+- <ins>Database</ins>
+  - User Model
+    - Name
+    - Email Address
+    - Password
+  - Matches Model
+    - Status (matched, waiting, etc.)
+    - Technology (Data Science, Web Development, etc.)
+    - Language (Python, JavaScript, etc.)
+- <ins>Backend API</ins>
+  - Querying MongoDB
+  - Add users to MongoDB
+  - Read users from MongoDB
+  - Matches in queue
+  - Chatroom creation
+- <ins>User Auth</ins>
+  - Convert password to token
+  - Authenticate user on every page that requires logged in status
+- <ins>Sockets Implementation</ins>
+  - Host and client communication
+  - Allow only authorized users
+  - Introduction message (problem statement)
+  - Opening and closing connections
