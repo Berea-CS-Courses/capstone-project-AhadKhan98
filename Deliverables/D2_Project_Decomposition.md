@@ -38,9 +38,9 @@
 
 ### **<ins>Sockets Implementation</ins>**
 
-**Overview:** This component is responsible for creating a socket connection which the two matched users can access. The result would be a real-time chat room where the helper and helpee can talk about the problem in detail and come up with a solution.
-**Interactions:** This component will interact with all other components to create a successful connection. Only the users that are matched up should be able to connect and this would be ensured by the user authentication component, the backend component, and the databse. The result would be in the form of a chat room page that would be shown in the front-end ui component.
-**Requirements:** In order to make this component work, a library known as socket.io will be used. This will provide real-time socket management and the ability for users to send, receive messages instantly.
+**Overview:** This component is responsible for creating a socket connection which the two matched users can access. The result would be a real-time chat room where the helper and helpee can talk about the problem in detail and come up with a solution.  
+**Interactions:** This component will interact with all other components to create a successful connection. Only the users that are matched up should be able to connect and this would be ensured by the user authentication component, the backend component, and the databse. The result would be in the form of a chat room page that would be shown in the front-end ui component.  
+**Requirements:** In order to make this component work, a library known as socket.io will be used. This will provide real-time socket management and the ability for users to send, receive messages instantly.  
 **Importance:** This is an important part of the system. Once the users are matched together, they will need a place where they can talk to each other, discuss the problem and come up with a solution together. This component provides just that.
 
 # Section 3: Breaking Up Components
