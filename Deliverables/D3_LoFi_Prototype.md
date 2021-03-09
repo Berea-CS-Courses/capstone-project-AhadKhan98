@@ -36,6 +36,23 @@ This state shows when the user has not signed into the application. It is respon
 
 When the user has logged in, the toggle at the top will be used to switch between a helper and a helpee. The UI for both of the roles is the same except for some textual changes. Therefore, the UI sketches of only the helpee is shown below.
 
+### <ins>_Profile Modal & Page_</ins>
+
+Profile Modal:  
+<a href="./d3_assets/ui_sketches/auth/profile/profile_modal.jpg">
+<img src="./d3_assets/ui_sketches/auth/profile/profile_modal.jpg" height="300px" width="300px">
+</a>
+
+Helper Profile Page:  
+<a href="./d3_assets/ui_sketches/auth/profile/profile_helper.jpg">
+<img src="./d3_assets/ui_sketches/auth/profile/profile_helper.jpg" height="300px" width="300px">
+</a>
+
+Edit Profile Page:  
+<a href="./d3_assets/ui_sketches/auth/profile/profile_edit.jpg">
+<img src="./d3_assets/ui_sketches/auth/profile/profile_edit.jpg" height="300px" width="300px">
+</a>
+
 ### <ins>_User status = "idle"_</ins>
 
 This is when the user is not currently waiting for a match, or has been placed into a chatroom. The images below show what the user would see the first time they log into the app.
