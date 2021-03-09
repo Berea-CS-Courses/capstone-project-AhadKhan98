@@ -8,25 +8,25 @@ This document is organized into two main sections, the UI Sketches, and the Syst
 
 This state shows when the user has not signed into the application. It is responsible for providing the users with an interface to create an account, or login to an existing account. Addtionally, a description and overview of the web application is provided to the users.
 
-### Landing Page
+### <ins>_Landing Page_</ins>
 
 <a href="./d3_assets/ui_sketches/unauth/landing.jpg">
 <img src="./d3_assets/ui_sketches/unauth/landing.jpg" width="300px" height="300px" >
 </a>
 
-### FAQs Page
+### <ins>_FAQs Page_</ins>
 
 <a href="./d3_assets/ui_sketches/unauth/faqs.jpg">
 <img src="./d3_assets/ui_sketches/unauth/faqs.jpg" width="300px" height="300px" >
 </a>
 
-### Login Modal
+### <ins>_Login Modal_</ins>
 
 <a href="./d3_assets/ui_sketches/unauth/loginModal.jpg">
 <img src="./d3_assets/ui_sketches/unauth/loginModal.jpg" width="300px" height="300px" >
 </a>
 
-### Signup Modal
+### <ins>_Signup Modal_</ins>
 
 <a href="./d3_assets/ui_sketches/unauth/signupModal.jpg">
 <img src="./d3_assets/ui_sketches/unauth/signupModal.jpg" width="300px" height="300px" >
@@ -34,10 +34,29 @@ This state shows when the user has not signed into the application. It is respon
 
 ## Authenticated State:
 
-User status = "idle"
+When the user has logged in, the toggle at the top will be used to switch between a helper and a helpee. The UI for both of the roles is the same except for some textual changes. Therefore, the UI sketches of only the helpee is shown below.
 
-User status = "waiting"
+### <ins>_User status = "idle"_</ins>
 
-User status = "matched"
+This is when the user is not currently waiting for a match, or has been placed into a chatroom. The images below show what the user would see the first time they log into the app.
+
+Step 1: Select Technology:  
+<a href="./d3_assets/ui_sketches/auth/idle/idle_step1.jpg">
+<img src="./d3_assets/ui_sketches/auth/idle/idle_step1.jpg" width="300px" height="300px">
+</a>
+
+Step 2: Select Language:  
+<a href="./d3_assets/ui_sketches/auth/idle/idle_step2.jpg">
+<img src="./d3_assets/ui_sketches/auth/idle/idle_step2.jpg" width="300px" height="300px">
+</a>
+
+Step 3: Describe Problem Statement:  
+<a href="./d3_assets/ui_sketches/auth/idle/idle_step3.jpg">
+<img src="./d3_assets/ui_sketches/auth/idle/idle_step3.jpg" width="300px" height="">
+</a>
+
+### <ins>_User status = "waiting"_</ins>
+
+### <ins>_User status = "matched"_</ins>
 
 # Section 2: System Model Diagrams
