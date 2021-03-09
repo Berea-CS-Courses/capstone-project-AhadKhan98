@@ -57,6 +57,20 @@ Step 3: Describe Problem Statement:
 
 ### <ins>_User status = "waiting"_</ins>
 
+<a href="./d3_assets/ui_sketches/auth/waiting/waiting.jpg">
+<img src="./d3_assets/ui_sketches/auth/waiting/waiting.jpg" width="300px" height="">
+</a>
+
 ### <ins>_User status = "matched"_</ins>
+
+Step 1: Chat Room  
+<a href="./d3_assets/ui_sketches/auth/matched/matched_step1.jpg">
+<img src="./d3_assets/ui_sketches/auth/matched/matched_step1.jpg" width="300px" height="">
+</a>
+
+Step 2: Leave Feedback  
+<a href="./d3_assets/ui_sketches/auth/matched/matched_step2.jpg">
+<img src="./d3_assets/ui_sketches/auth/matched/matched_step2.jpg" width="300px" height="">
+</a>
 
 # Section 2: System Model Diagrams
