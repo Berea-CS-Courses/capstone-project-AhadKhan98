@@ -55,7 +55,7 @@ Edit Profile Page:
 
 ### <ins>_User status = "idle"_</ins>
 
-This is when the user is not currently waiting for a match, or has been placed into a chatroom. The images below show what the user would see the first time they log into the app.
+This is when the user hasn't started looking for help yet. The images below show what the user would see the first time they log into the app.
 
 Step 1: Select Technology:  
 <a href="./d3_assets/ui_sketches/auth/idle/idle_step1.jpg">
@@ -91,3 +91,23 @@ Step 2: Leave Feedback
 </a>
 
 # Section 2: System Model Diagrams
+
+## User Flow Diagrams
+
+### Landing Page
+
+<a href="./d3_assets/system_diagrams/user_flow/user_flow_landing.PNG">
+<img src="./d3_assets/system_diagrams/user_flow/user_flow_landing.PNG" width="500px" height="">
+</a>
+
+### Helper View
+
+<a href="./d3_assets/system_diagrams/user_flow/user_flow_helper.PNG">
+<img src="./d3_assets/system_diagrams/user_flow/user_flow_helper.PNG" width="500px" height="">
+</a>
+
+### Helpee View
+
+<a href="./d3_assets/system_diagrams/user_flow/user_flow_helpee.PNG">
+<img src="./d3_assets/system_diagrams/user_flow/user_flow_helpee.PNG" width="500px" height="">
+</a>
