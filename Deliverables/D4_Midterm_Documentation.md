@@ -104,6 +104,8 @@ Now, clone the repo and follow the instructions below to start up the server and
 
 ## Functionality
 
+This proof-of-concept allows the user to run the backend and the frontend independently on their machine. It allows provides the functionality for the users to be able to view the backend as well as the frontend on the browser at the same time. Additionally, the functionality to communicate between the two entities is also present. The frontend makes a GET HTTP request to the backend server and then displays the response to the user.
+
 # Section 3: Updates
 
 # Section 4: Reflection
