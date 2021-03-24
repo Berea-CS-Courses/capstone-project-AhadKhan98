@@ -111,3 +111,7 @@ Step 2: Leave Feedback
 <a href="./d3_assets/system_diagrams/user_flow/user_flow_helpee.PNG">
 <img src="./d3_assets/system_diagrams/user_flow/user_flow_helpee.PNG" width="500px" height="">
 </a>
+
+# Section 3: Process Reflection
+
+I think creating the prototype was exciting and informative. Even though I used basic tools to draft out a prototype, I think it does an excellent job in depicting core system functionalities. During the process, I had to answer several questions. For example, "should a call to the database be made here or after the function?" And this reinforced my design process and made it much more transparent. I think following this prototype, I am ready to jump into the implementation phase. 
