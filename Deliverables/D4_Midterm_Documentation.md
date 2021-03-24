@@ -108,4 +108,8 @@ This proof-of-concept allows the user to run the backend and the frontend indepe
 
 # Section 3: Updates
 
+I have not made any changes to the project idea during the process. The project idea has stayed the same all throughout my deliverables. Therefore, there are no changes that need to be reflected in this section.
+
 # Section 4: Reflection
+
+Now that I have a working proof-of-concept, I feel even more confident in being able to implement the project. So far, I haven't really faced any major challenges or roadblocks and everything is sailing smoothly.
