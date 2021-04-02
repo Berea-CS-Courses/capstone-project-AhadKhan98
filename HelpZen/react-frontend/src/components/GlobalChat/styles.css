@@ -1,0 +1,43 @@
+.globalChat--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(228, 228, 228, 0.349);
+}
+
+.globalChat--header {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(89, 89, 236, 0.787);
+  color: white;
+}
+
+.globalChat--messages {
+  justify-content: center;
+}
+
+.globalChat--message--author {
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.globalChat--messages--message {
+  margin-right: 200px;
+}
+
+.globalChat--chat-form {
+  display: flex;
+  flex-direction: column;
+  /* padding: 10px; */
+}
+
+.globalChat--chat-form input {
+  margin-bottom: 2px;
+}
+
+.globalChat--chat-form--title {
+  padding: 0;
+  margin: 5 0;
+}

@@ -1,15 +1,23 @@
-const express = require("express");
+const app = require("express")();
+const http = require("http").createServer(app);
+const PORT = 8000;
+const io = require("socket.io")(http, { cors: { origin: "*" } });
 const cors = require("cors");
 
-const app = express();
 app.use(cors());
 
-const port = 8000;
-
 app.get("/", (req, res) => {
-  res.send("Hello from HelpZen backend.");
+  res.send("Hello");
 });
 
-app.listen(port, () => {
-  console.log(`HelpZen backend server running on port: ${port}`);
+io.on("connection", (socket) => {
+  console.log(`New connection established. ID:${socket.id}`);
+
+  socket.on("SEND_MESSAGE", (data) => {
+    io.emit("RECEIVE_MESSAGE", data);
+  });
+});
+
+http.listen(PORT, () => {
+  console.log(`HelpZen backend server running on port: ${PORT}`);
 });
