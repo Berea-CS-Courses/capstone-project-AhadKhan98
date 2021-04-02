@@ -13,15 +13,19 @@ _Project structure for frontend_
 <br><br>
 
 <img src="./d4_assets/proof-of-concept/react_code.PNG" height="300px"/><br>
-_Code for connecting to the server, and updating the data on the UI_
+_Code for connecting to the server, and sending/receiving messages_
 <br><br>
 
 <img src="./d4_assets/proof-of-concept/react_start_command.PNG" height="200px"/><br>
 _Running the react frontend on localhost using command prompt_
 <br><br>
 
-<img src="./d4_assets/proof-of-concept/react_browser.PNG" height="200px"/><br>
-_Result of the code in the screenshot above. Clicking the connect button tries to establish a connection with the server._
+<img src="./d4_assets/proof-of-concept/react_ui.PNG" height="200px"/><br>
+_Result of the code in the screenshot above._
+<br><br>
+
+<img src="./d4_assets/proof-of-concept/react_user1.PNG" height="200px"/><img src="./d4_assets/proof-of-concept/react_user2.PNG" height="200px"/><br>
+_Users can send messages, and all devices connected to the server will be able to view it in real-time._
 <br><br>
 
 ## NodeJS Backend
@@ -31,7 +35,7 @@ _Project structure for server_
 <br><br>
 
 <img src="./d4_assets/proof-of-concept/server_code.PNG" height="200px"/><br>
-_Code for starting up the server and returning a default message_
+_Code for starting up the server and allowing devices to connect_
 <br><br>
 
 <img src="./d4_assets/proof-of-concept/server_start_command.PNG" height="100px"/><br>
@@ -44,24 +48,8 @@ _Viewing server in the browser_
 
 ## Communication Between The Two
 
-## Success
-
-<img src="./d4_assets/proof-of-concept/react_success_alert.PNG" height="200px"/><br>
-_Alerting the user when the server is running and returning responses successfully._
-<br><br>
-
-<img src="./d4_assets/proof-of-concept/react_success.PNG" height="200px"/><br>
-_Showing the message received by the server on the user interface._
-<br><br>
-
-## Failure
-
-<img src="./d4_assets/proof-of-concept/react_failed_alert.PNG" height="250px"/><br>
-_Alerting the user when the server is either not running or failed to return a valid response._
-<br><br>
-
-<img src="./d4_assets/proof-of-concept/react_failed.PNG" height="200px"/><br>
-_Showing the error message on the user interface._
+<img src="./d4_assets/proof-of-concept/server_connection.PNG" height="150px"/><br>
+_Everytime a user opens the frontend, the backend establishes a socket connection and displays the connection id._
 <br><br>
 
 # Section 2: Concept Documentation
@@ -76,7 +64,8 @@ Dependencies:
 - Express
 - Cors
 - Nodemon
-- Axios
+- Socket.io
+- Socket.io-client
 
 ## Instructions
 
@@ -104,7 +93,7 @@ Now, clone the repo and follow the instructions below to start up the server and
 
 ## Functionality
 
-This proof-of-concept allows the user to run the backend and the frontend independently on their machine. It allows provides the functionality for the users to be able to view the backend as well as the frontend on the browser at the same time. Additionally, the functionality to communicate between the two entities is also present. The frontend makes a GET HTTP request to the backend server and then displays the response to the user.
+This proof-of-concept allows the user to run the backend and the frontend independently on their machine. It allows provides the functionality for the users to be able to view the backend as well as the frontend on the browser at the same time. Additionally, the functionality to communicate between the two entities is also present. Multiple users can communicate with each other using global chat, which works using socket connections.
 
 # Section 3: Updates
 
