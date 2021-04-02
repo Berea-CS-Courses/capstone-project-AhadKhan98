@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-import GlobalChat from "./components/GlobalChat";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import HomeView from "./views/HomeView";
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
-    <div className="app">
-      <GlobalChat />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <HomeView user={user} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
