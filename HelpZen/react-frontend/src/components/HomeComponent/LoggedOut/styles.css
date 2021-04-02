@@ -1,8 +1,5 @@
 .home--loggedOut--contentArea {
   padding: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .home--loggedOut--contentArea--block1 {
@@ -12,10 +9,57 @@
 }
 
 .home--loggedOut--contentArea--block1--leftItems {
-  flex-grow: 1;
+  flex: 0.5;
+}
+
+.home--loggedOut--contentArea--block1--leftItems--title {
+  font-size: 2rem;
+}
+
+.home--loggedOut--contentArea--block1--leftItems--paragraph {
+  font-weight: normal;
+  font-style: italic;
 }
 
 .home--loggedOut--contentArea--block1--rightItems--image {
   object-fit: contain;
+  position: relative;
   width: 500px;
+}
+
+.home--loggedOut--contentArea--block2--icon {
+  font-size: 5rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.home--loggedOut--contentArea--block2--steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home--loggedOut--contentArea--block2--steps div {
+  margin: 0 50px;
+}
+
+.home--loggedOut--contentArea--block2--steps--1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+  flex: 0.2;
+}
+
+.home--loggedOut--contentArea--block2--stepTitle {
+  margin: 0;
+  padding: 0;
+}
+
+.home--loggedOut--contentArea--block2--stepDescription {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: italic;
 }
