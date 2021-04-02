@@ -1,11 +1,17 @@
 .home--loggedOut--contentArea {
-  padding: 50px;
+  padding: 5px 5px;
 }
 
 .home--loggedOut--contentArea--block1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 85vh;
+}
+
+.home--loggedOut--contentArea--block2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .home--loggedOut--contentArea--block1--leftItems {
@@ -43,7 +49,7 @@
   margin: 0 50px;
 }
 
-.home--loggedOut--contentArea--block2--steps--1 {
+.home--loggedOut--contentArea--block2--steps--container {
   display: flex;
   align-items: center;
   justify-content: flex-start;
