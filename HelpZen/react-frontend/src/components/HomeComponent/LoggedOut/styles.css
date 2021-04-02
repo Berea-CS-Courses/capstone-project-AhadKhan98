@@ -1,0 +1,21 @@
+.home--loggedOut--contentArea {
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home--loggedOut--contentArea--block1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home--loggedOut--contentArea--block1--leftItems {
+  flex-grow: 1;
+}
+
+.home--loggedOut--contentArea--block1--rightItems--image {
+  object-fit: contain;
+  width: 500px;
+}
