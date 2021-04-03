@@ -13,8 +13,7 @@ function Footer() {
             <Typography className="footer--appBar--toolbar--leftItems--pagesText">
               <Link to="/">Home</Link> |{" "}
               <a href="#how-it-works">How it Works</a> |{" "}
-              <Link to="/">FAQs</Link> | <Link to="/">Login</Link> |{" "}
-              <Link to="/">Register</Link>
+              <Link to="/">FAQs</Link>
             </Typography>
           </div>
 

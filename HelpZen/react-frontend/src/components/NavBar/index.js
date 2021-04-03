@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
+import { AppBar, Toolbar, Button } from "@material-ui/core";
+
 import "./styles.css";
 
 import logoImg from "../../assets/images/helpzen-logo.png";
 
-function NavBar({ user }) {
+function NavBar({ user, loginModalHandler, registerModalHandler }) {
   const renderRightItems = () => {
     if (!user) {
       return (
@@ -18,6 +19,7 @@ function NavBar({ user }) {
             className="navBar--appBar--rightItems--registerButton"
             variant="outlined"
             color="primary"
+            onClick={registerModalHandler}
           >
             Register
           </Button>
@@ -25,6 +27,7 @@ function NavBar({ user }) {
             className="navBar--appBar--rightItems--loginButton"
             variant="outlined"
             color="primary"
+            onClick={loginModalHandler}
           >
             Login
           </Button>

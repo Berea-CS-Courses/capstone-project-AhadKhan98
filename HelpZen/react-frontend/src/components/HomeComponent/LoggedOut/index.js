@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import "./styles.css";
 import firstblockImg from "../../../assets/images/firstblock.png";
@@ -11,10 +11,33 @@ import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import TimerIcon from "@material-ui/icons/Timer";
 import ChatIcon from "@material-ui/icons/Chat";
 
+import LoginModal from "../../Modals/LoginModal";
+import RegisterModal from "../../Modals/RegisterModal";
+
 function LoggedOut({ user }) {
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [registerModalOpen, setRegisterModalOpen] = useState(false);
+
+  const handleLoginModalToggle = () => {
+    setLoginModalOpen(!loginModalOpen);
+  };
+
+  const handleRegisterModalToggle = () => {
+    setRegisterModalOpen(!registerModalOpen);
+  };
+
   return (
     <div className="home--loggedOut">
-      <NavBar user={user} />
+      <LoginModal open={loginModalOpen} handleToggle={handleLoginModalToggle} />
+      <RegisterModal
+        open={registerModalOpen}
+        handleToggle={handleRegisterModalToggle}
+      />
+      <NavBar
+        user={user}
+        loginModalHandler={handleLoginModalToggle}
+        registerModalHandler={handleRegisterModalToggle}
+      />
       <div className="home--loggedOut--contentArea">
         <div className="home--loggedOut--contentArea--block1">
           <div className="home--loggedOut--contentArea--block1--leftItems">
@@ -99,6 +122,7 @@ function LoggedOut({ user }) {
             <Button
               className="home--loggedOut--contentArea--joinButton"
               variant="outlined"
+              onClick={handleRegisterModalToggle}
             >
               Join The Community
             </Button>
