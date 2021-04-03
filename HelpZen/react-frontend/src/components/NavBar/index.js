@@ -14,7 +14,9 @@ function NavBar({ user, loginModalHandler, registerModalHandler }) {
           <a href="#how-it-works">
             <p className="navBar--appBar--rightItems--pageText">How It Works</p>
           </a>
-          <p className="navBar--appBar--rightItems--pageText">FAQs</p>
+          <a href="#faqs">
+            <p className="navBar--appBar--rightItems--pageText">FAQs</p>
+          </a>
           <Button
             className="navBar--appBar--rightItems--registerButton"
             variant="outlined"

@@ -1,0 +1,66 @@
+.home--loggedOut--contentArea--block2 {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-bottom: 50px;
+}
+
+.home--loggedOut--contentArea--block2--icon {
+  font-size: 5rem !important;
+  margin-right: 7px !important;
+}
+
+.home--loggedOut--contentArea--block2--steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home--loggedOut--contentArea--block2--steps div {
+  margin: 0 50px;
+}
+
+.home--loggedOut--contentArea--block2--steps--container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+  flex: 0.2;
+}
+
+.home--loggedOut--contentArea--block2--stepTitle {
+  margin: 0;
+  padding: 0;
+}
+
+.home--loggedOut--contentArea--block2--stepDescription {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.home--loggedOut--contentArea--block2--header {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 40px 0px;
+}
+
+.icon--person {
+  color: #00aeef !important;
+}
+
+.icon--phone {
+  color: #569342 !important;
+}
+
+.icon--code {
+  color: #000000 !important;
+}
+
+.icon--clock {
+  color: #9706aa !important;
+}
+
+.icon--chat {
+  color: rgb(0, 89, 231) !important;
+}

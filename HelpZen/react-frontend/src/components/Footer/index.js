@@ -11,9 +11,8 @@ function Footer() {
         <Toolbar className="footer--appBar--toolbar">
           <div className="footer--appBar--toolbar--leftItems">
             <Typography className="footer--appBar--toolbar--leftItems--pagesText">
-              <Link to="/">Home</Link> |{" "}
-              <a href="#how-it-works">How it Works</a> |{" "}
-              <Link to="/">FAQs</Link>
+              <a href="#">Home</a> | <a href="#how-it-works">How it Works</a> |{" "}
+              <a href="#faqs">FAQs</a>
             </Typography>
           </div>
 
