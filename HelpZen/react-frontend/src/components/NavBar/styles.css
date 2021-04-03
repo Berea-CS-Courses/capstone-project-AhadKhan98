@@ -42,3 +42,28 @@
 .navBar--appBar--rightItems--pageText:hover {
   text-decoration: underline;
 }
+
+.MuiIconButton-label {
+  color: #313131;
+}
+
+.MuiSwitch-track {
+  background-color: #00bfc0 !important;
+}
+
+.navBar--appBar--rightItems--userStatus {
+  display: flex;
+  align-items: center;
+  color: black;
+  margin: 20px;
+}
+
+.navBar--appBar--rightItems--userProfile {
+  color: black;
+  display: flex;
+  cursor: pointer;
+}
+
+.navBar--appBar--rightItems--userProfile button {
+  text-transform: none;
+}

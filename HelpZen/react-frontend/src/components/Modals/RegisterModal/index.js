@@ -16,7 +16,8 @@ function RegisterModal({ open, handleToggle }) {
         <div className="registerModal--body">
           <h2>Register</h2>
           <form>
-            <TextField id="email" label="Name" />
+            <TextField id="firstName" label="First Name" />
+            <TextField id="lastName" label="Last Name" />
             <TextField id="email" label="Email" />
             <TextField type="password" id="password" label="Password" />
             <Button color="primary" variant="contained">

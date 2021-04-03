@@ -4,16 +4,36 @@ import { Link } from "react-router-dom";
 import logoImg from "../../assets/images/helpzen-logo.png";
 import "./styles.css";
 
-function Footer() {
+function Footer({ user }) {
+  const renderLeftItems = () => {
+    if (!user) {
+      return (
+        <>
+          <Typography className="footer--appBar--toolbar--leftItems--pagesText">
+            <a href="#">Home</a> | <a href="#how-it-works">How it Works</a> |{" "}
+            <a href="#faqs">FAQs</a>
+          </Typography>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Typography className="footer--appBar--toolbar--leftItems--pagesText">
+            <a href="#">Edit Profile</a> |{" "}
+            <a href="#how-it-works">Helper Stats</a> |{" "}
+            <a href="#faqs">Logout</a>
+          </Typography>
+        </>
+      );
+    }
+  };
+
   return (
     <div className="footer">
       <AppBar className="footer--appBar" position="static">
         <Toolbar className="footer--appBar--toolbar">
           <div className="footer--appBar--toolbar--leftItems">
-            <Typography className="footer--appBar--toolbar--leftItems--pagesText">
-              <a href="#">Home</a> | <a href="#how-it-works">How it Works</a> |{" "}
-              <a href="#faqs">FAQs</a>
-            </Typography>
+            {renderLeftItems()}
           </div>
 
           <div className="footer--appBar--toolbar--rightItems">

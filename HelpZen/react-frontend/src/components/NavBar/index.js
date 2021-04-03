@@ -1,12 +1,37 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Button } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Switch,
+  Typography,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
 
 import "./styles.css";
 
 import logoImg from "../../assets/images/helpzen-logo.png";
 
-function NavBar({ user, loginModalHandler, registerModalHandler }) {
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
+
+function NavBar({
+  user,
+  loginModalHandler,
+  registerModalHandler,
+  handleUserStatusToggle,
+}) {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleUserMenuButtonClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleUserMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   const renderRightItems = () => {
     if (!user) {
       return (
@@ -36,7 +61,46 @@ function NavBar({ user, loginModalHandler, registerModalHandler }) {
         </>
       );
     } else {
-      return <p>USER</p>;
+      return (
+        <>
+          <div className="navBar--appBar--rightItems--userStatus">
+            <Typography>Get Help</Typography>
+            <Switch onChange={handleUserStatusToggle} color="default" />
+            <Typography>Offer Help</Typography>
+          </div>
+          <div className="navBar--appBar--rightItems--userProfile">
+            <Button
+              aria-controls="userMenu"
+              aria-haspopup="true"
+              onClick={handleUserMenuButtonClick}
+              variant="outlined"
+            >
+              <Typography>{user.firstName}</Typography>
+              <ArrowDropDownIcon />
+            </Button>
+            <Menu
+              getContentAnchorEl={null}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+              id="userMenu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleUserMenuClose}
+            >
+              <MenuItem>Edit Profile</MenuItem>
+              <MenuItem>Helper Stats</MenuItem>
+              <MenuItem>Logout</MenuItem>
+            </Menu>
+          </div>
+        </>
+      );
     }
   };
 

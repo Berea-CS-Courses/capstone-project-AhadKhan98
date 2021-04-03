@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomeView from "./views/HomeView";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ firstName: "Ahad" });
 
   return (
     <Router>
