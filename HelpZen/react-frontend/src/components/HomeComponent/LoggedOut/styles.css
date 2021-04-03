@@ -1,30 +1,24 @@
-.home--loggedOut--contentArea {
-  padding: 5px 5px;
-}
-
 .home--loggedOut--contentArea--block1 {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 85vh;
-}
-
-.home--loggedOut--contentArea--block2 {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding-top: 100px;
+  padding-bottom: 120px;
 }
 
 .home--loggedOut--contentArea--block1--leftItems {
-  flex: 0.5;
+  flex: 0.6;
 }
 
 .home--loggedOut--contentArea--block1--leftItems--title {
-  font-size: 2rem;
+  font-size: 2.6rem;
 }
 
 .home--loggedOut--contentArea--block1--leftItems--paragraph {
   font-weight: normal;
   font-style: italic;
+  font-size: 1.3rem;
 }
 
 .home--loggedOut--contentArea--block1--rightItems--image {
@@ -35,8 +29,7 @@
 
 .home--loggedOut--contentArea--block2--icon {
   font-size: 5rem !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin-right: 7px !important;
 }
 
 .home--loggedOut--contentArea--block2--steps {
@@ -68,4 +61,46 @@
   padding: 0;
   font-weight: normal;
   font-style: italic;
+}
+
+.home--loggedOut--contentArea--buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home--loggedOut--contentArea--joinButton {
+  display: flex;
+  margin: 30px 0px !important;
+  align-self: center !important;
+  color: #00bfc0 !important;
+  border: 1px solid rgba(0, 191, 192, 0.5) !important;
+  padding: 8px 20px !important;
+  font-weight: bold !important;
+}
+
+.home--loggedOut--contentArea--block2--header {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 40px 0px;
+}
+
+.icon--person {
+  color: #00aeef !important;
+}
+
+.icon--phone {
+  color: #569342 !important;
+}
+
+.icon--code {
+  color: #000000 !important;
+}
+
+.icon--clock {
+  color: #9706aa !important;
+}
+
+.icon--chat {
+  color: rgb(0, 89, 231) !important;
 }
