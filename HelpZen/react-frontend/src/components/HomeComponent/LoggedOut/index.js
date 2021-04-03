@@ -3,6 +3,7 @@ import { Button } from "@material-ui/core";
 import "./styles.css";
 import firstblockImg from "../../../assets/images/firstblock.png";
 import NavBar from "../../NavBar";
+import Footer from "../../Footer";
 import PersonIcon from "@material-ui/icons/Person";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import CodeIcon from "@material-ui/icons/Code";
@@ -34,7 +35,10 @@ function LoggedOut({ user }) {
           </div>
         </div>
         <div className="home--loggedOut--contentArea--block2">
-          <h1 className="home--loggedOut--contentArea--block2--header">
+          <h1
+            id="how-it-works"
+            className="home--loggedOut--contentArea--block2--header"
+          >
             How it Works
           </h1>
           <div className="home--loggedOut--contentArea--block2--steps">
@@ -101,7 +105,7 @@ function LoggedOut({ user }) {
           </div>
         </div>
 
-        <div className="home--loggedOut--contentArea--footer"></div>
+        <Footer />
       </div>
     </div>
   );

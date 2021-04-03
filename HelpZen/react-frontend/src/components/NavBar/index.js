@@ -10,7 +10,9 @@ function NavBar({ user }) {
     if (!user) {
       return (
         <>
-          <p className="navBar--appBar--rightItems--pageText">How It Works</p>
+          <a href="#how-it-works">
+            <p className="navBar--appBar--rightItems--pageText">How It Works</p>
+          </a>
           <p className="navBar--appBar--rightItems--pageText">FAQs</p>
           <Button
             className="navBar--appBar--rightItems--registerButton"

@@ -7,6 +7,10 @@
   padding-bottom: 120px;
 }
 
+.home--loggedOut--contentArea--block2 {
+  padding-bottom: 50px;
+}
+
 .home--loggedOut--contentArea--block1--leftItems {
   flex: 0.6;
 }

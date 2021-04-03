@@ -1,0 +1,26 @@
+.footer--appBar--toolbar {
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white !important;
+}
+
+.footer--appBar--toolbar--leftItems {
+  margin-right: auto;
+}
+
+.footer--appBar--toolbar--rightItems--logoImg {
+  object-fit: contain;
+  width: 150px;
+  margin-right: auto;
+}
+
+.footer--appBar--toolbar--leftItems--pagesText {
+  color: black;
+}
+
+.footer--appBar--toolbar--leftItems--pagesText a {
+  color: black !important;
+  text-decoration: none !important;
+}
