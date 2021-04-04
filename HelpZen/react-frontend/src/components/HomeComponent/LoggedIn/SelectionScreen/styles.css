@@ -1,0 +1,18 @@
+.selectionScreen--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.selectionScreen--container--heading1 {
+  padding: 0;
+  margin: 0;
+}
+
+.selectionScreen--container--heading2 {
+  padding: 0;
+  margin: 0;
+}

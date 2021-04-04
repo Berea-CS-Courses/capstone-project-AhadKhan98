@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import NavBar from "../../NavBar";
 import Footer from "../../Footer";
 
+import SelectionScreen from "./SelectionScreen";
+
 import "./styles.css";
 
 function LoggedIn({ user }) {
@@ -16,20 +18,12 @@ function LoggedIn({ user }) {
     }
   };
 
-  const renderSelectionScreen = () => {
-    if (userStatus === "helpee") {
-      return <h1>User is looking for help!</h1>;
-    } else {
-      return <h1>User is looking to help!</h1>;
-    }
-  };
-
   console.log("User Status Is", userStatus);
   return (
     <div className="home--loggedIn--container">
       <NavBar user={user} handleUserStatusToggle={handleUserStatusToggle} />
       <div className="home--loggedIn--container--selectionScreen">
-        {renderSelectionScreen()}
+        <SelectionScreen userStatus={userStatus} user={user} />
       </div>
       <Footer user={user} />
     </div>
