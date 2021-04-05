@@ -1,0 +1,4 @@
+.selectTechnology--iconCard {
+  display: flex;
+  flex-wrap: wrap;
+}

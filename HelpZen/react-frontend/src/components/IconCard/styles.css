@@ -1,0 +1,10 @@
+.iconCard--img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.iconCard--card {
+  margin: 40px;
+  padding: 0px 20px;
+}

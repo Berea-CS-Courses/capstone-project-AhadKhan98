@@ -2,13 +2,18 @@ import React from "react";
 
 import "./styles.css";
 
-import SelectLanguage from "../SelectLanguage";
+import IconCard from "../../../../IconCard";
+import { data } from "./data";
 
 function SelectTechnology() {
   return (
-    <div>
+    <div className="selectTechnology--container">
       <h4>Select tech</h4>
-      <button onClick={() => <SelectLanguage />}>Next</button>
+      <div className="selectTechnology--iconCard">
+        {data.map((technology) => (
+          <IconCard technology={technology} />
+        ))}
+      </div>
     </div>
   );
 }
