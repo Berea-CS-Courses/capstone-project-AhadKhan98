@@ -2,13 +2,19 @@ import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import "./styles.css";
 
-function IconCard({ technology }) {
+function IconCard({ technology, updateScreen }) {
+  const handleCardOnClick = () => {
+    console.log(
+      `Card clicked. Store ${technology.value} for matching purposes.`
+    );
+    updateScreen();
+  };
+
   return (
-    <Card className="iconCard--card">
+    <Card className="iconCard--card" onClick={handleCardOnClick}>
       <CardContent>
-        <Typography>{technology.name}</Typography>
         <img className="iconCard--img" src={technology.icon} />
-        <Typography>{technology.value}</Typography>
+        <Typography className="iconCard--title">{technology.name}</Typography>
       </CardContent>
     </Card>
   );

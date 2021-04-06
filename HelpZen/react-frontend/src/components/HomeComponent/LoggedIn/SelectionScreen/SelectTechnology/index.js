@@ -5,13 +5,13 @@ import "./styles.css";
 import IconCard from "../../../../IconCard";
 import { data } from "./data";
 
-function SelectTechnology() {
+function SelectTechnology({ updateScreen }) {
   return (
     <div className="selectTechnology--container">
-      <h4>Select tech</h4>
+      <h4>Select technology</h4>
       <div className="selectTechnology--iconCard">
         {data.map((technology) => (
-          <IconCard technology={technology} />
+          <IconCard technology={technology} updateScreen={updateScreen} />
         ))}
       </div>
     </div>

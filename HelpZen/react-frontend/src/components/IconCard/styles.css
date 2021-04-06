@@ -1,3 +1,8 @@
+.iconCard--card {
+  cursor: pointer;
+  flex: 1 0 21%;
+}
+
 .iconCard--img {
   width: 100px;
   height: 100px;
@@ -5,6 +10,10 @@
 }
 
 .iconCard--card {
-  margin: 40px;
-  padding: 0px 20px;
+  margin: 5px;
+  padding: 25px 0px;
+}
+
+.iconCard--title {
+  font-weight: bold !important;
 }

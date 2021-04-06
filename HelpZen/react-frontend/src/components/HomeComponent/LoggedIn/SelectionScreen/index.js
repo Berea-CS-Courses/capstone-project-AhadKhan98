@@ -39,9 +39,13 @@ function SelectionScreen({ user, userStatus }) {
         </div>
       );
     } else if (userStatus === "helpee") {
+      const updateScreen = () => {
+        setHelpeeScreenCount(helpeeScreenCount + 1);
+      };
+
       const renderScreen = () => {
         if (helpeeScreenCount === 1) {
-          return <SelectTechnology />;
+          return <SelectTechnology updateScreen={updateScreen} />;
         } else if (helpeeScreenCount === 2) {
           return <SelectLanguage />;
         } else if (helpeeScreenCount === 3) {
@@ -61,9 +65,6 @@ function SelectionScreen({ user, userStatus }) {
             You can get help from others in minutes.
           </h3>
           {renderScreen()}
-          <button onClick={() => setHelpeeScreenCount(helpeeScreenCount + 1)}>
-            NEXT
-          </button>
         </div>
       );
     }
