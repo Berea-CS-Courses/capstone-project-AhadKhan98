@@ -15,12 +15,11 @@ function SelectTechnology({ updateScreenAndUpdateState }) {
       <h4>Select technology</h4>
       <div className="selectTechnology--iconCard">
         {data.map((technology) => (
-          <div onClick={() => handleCardClick(technology.value)} className="">
-            <IconCard
-              technology={technology}
-              updateScreenAndUpdateState={updateScreenAndUpdateState}
-            />
-          </div>
+          <IconCard
+            onClick={() => handleCardClick(technology.value)}
+            technology={technology}
+            updateScreenAndUpdateState={updateScreenAndUpdateState}
+          />
         ))}
       </div>
     </div>
