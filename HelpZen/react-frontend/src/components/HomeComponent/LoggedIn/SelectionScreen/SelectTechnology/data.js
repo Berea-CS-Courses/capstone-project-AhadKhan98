@@ -9,11 +9,11 @@ import scripting from "../../../../../assets/images/technologies/scripting.png";
 
 export const data = [
   { name: "Artificial Intelligence", icon: aiImg, value: "ai" },
-  { name: "Mobile Development", icon: mobileImg, value: "mobile" },
-  { name: "Web Development", icon: webdevImg, value: "web" },
-  { name: "Game Development", icon: gamedevImg, value: "game" },
   { name: "Data Science", icon: datascienceImg, value: "datasci" },
   { name: "Databases", icon: databases, value: "databases" },
   { name: "Desktop Development", icon: desktopdev, value: "desktop" },
+  { name: "Game Development", icon: gamedevImg, value: "game" },
+  { name: "Mobile Development", icon: mobileImg, value: "mobile" },
   { name: "Scripting", icon: scripting, value: "scripting" },
+  { name: "Web Development", icon: webdevImg, value: "web" },
 ];

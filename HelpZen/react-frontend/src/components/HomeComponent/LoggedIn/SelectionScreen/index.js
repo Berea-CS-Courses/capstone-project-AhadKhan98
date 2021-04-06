@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./styles.css";
 
@@ -10,12 +10,38 @@ import FindMatch from "./FindMatch";
 function SelectionScreen({ user, userStatus }) {
   const [helperScreenCount, setHelperScreenCount] = useState(1);
   const [helpeeScreenCount, setHelpeeScreenCount] = useState(1);
+  const [matchQuery, setMatchQuery] = useState({ userStatus });
+
+  console.log("MATCH QUERY", matchQuery);
+
+  useEffect(() => {
+    if (userStatus === "helpee") {
+      setHelperScreenCount(1);
+      setMatchQuery({ userStatus });
+    } else {
+      setHelpeeScreenCount(1);
+      setMatchQuery({ userStatus });
+    }
+  }, [userStatus]);
 
   const renderSelectionScreen = () => {
+    const updateScreenAndUpdateState = (data) => {
+      if (userStatus === "helpee") {
+        setHelpeeScreenCount(helpeeScreenCount + 1);
+      } else {
+        setHelperScreenCount(helpeeScreenCount + 1);
+      }
+      setMatchQuery({ ...matchQuery, ...data });
+    };
+
     if (userStatus === "helper") {
       const renderScreen = () => {
         if (helperScreenCount === 1) {
-          return <SelectTechnology />;
+          return (
+            <SelectTechnology
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else if (helperScreenCount === 2) {
           return <SelectLanguage />;
         } else if (helperScreenCount === 3) {
@@ -33,19 +59,16 @@ function SelectionScreen({ user, userStatus }) {
             You can start helping others in minutes.
           </h3>
           {renderScreen()}
-          <button onClick={() => setHelperScreenCount(helperScreenCount + 1)}>
-            Next
-          </button>
         </div>
       );
     } else if (userStatus === "helpee") {
-      const updateScreen = () => {
-        setHelpeeScreenCount(helpeeScreenCount + 1);
-      };
-
       const renderScreen = () => {
         if (helpeeScreenCount === 1) {
-          return <SelectTechnology updateScreen={updateScreen} />;
+          return (
+            <SelectTechnology
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else if (helpeeScreenCount === 2) {
           return <SelectLanguage />;
         } else if (helpeeScreenCount === 3) {
