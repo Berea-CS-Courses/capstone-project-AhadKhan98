@@ -43,7 +43,11 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helperScreenCount === 2) {
-          return <SelectLanguage />;
+          return (
+            <SelectLanguage
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else if (helperScreenCount === 3) {
           return <FindMatch />;
         } else {
@@ -70,7 +74,11 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helpeeScreenCount === 2) {
-          return <SelectLanguage />;
+          return (
+            <SelectLanguage
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else if (helpeeScreenCount === 3) {
           return <InputProblem />;
         } else if (helpeeScreenCount === 4) {

@@ -12,13 +12,14 @@ function SelectTechnology({ updateScreenAndUpdateState }) {
 
   return (
     <div className="selectTechnology--container">
-      <h4>Select technology</h4>
+      <h4 className="selectTechnology--title">
+        Please select your preferred technology below
+      </h4>
       <div className="selectTechnology--iconCard">
         {data.map((technology) => (
           <IconCard
             onClick={() => handleCardClick(technology.value)}
             technology={technology}
-            updateScreenAndUpdateState={updateScreenAndUpdateState}
           />
         ))}
       </div>
