@@ -10,7 +10,7 @@ function InputProblem({ updateScreenAndUpdateState }) {
     setCodeReferenceValue(e.target.value);
   };
 
-  const handlePoblemTextFieldChange = (e) => {
+  const handleProblemTextFieldChange = (e) => {
     setProblemValue(e.target.value);
   };
 
@@ -32,7 +32,7 @@ function InputProblem({ updateScreenAndUpdateState }) {
         variant="outlined"
         rows={6}
         value={problemValue}
-        onChange={handlePoblemTextFieldChange}
+        onChange={handleProblemTextFieldChange}
       />
       <h4>Add any references to your code.</h4>
       <TextField
