@@ -23,7 +23,9 @@ function InputProblem({ updateScreenAndUpdateState }) {
 
   return (
     <div className="inputProblem--container">
-      <h4>Describe your problem in the field below.</h4>
+      <h4 className="inputProblem--title">
+        Describe your problem in the field below.
+      </h4>
       <TextField
         id="outlined-textarea"
         label="Problem Statement"
@@ -34,7 +36,7 @@ function InputProblem({ updateScreenAndUpdateState }) {
         value={problemValue}
         onChange={handleProblemTextFieldChange}
       />
-      <h4>Add any references to your code.</h4>
+      <h4 className="inputProblem--title">Add any references to your code.</h4>
       <TextField
         id="outlined-textarea"
         label="Code References"

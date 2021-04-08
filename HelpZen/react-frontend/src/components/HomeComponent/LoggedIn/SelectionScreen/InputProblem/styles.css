@@ -5,3 +5,8 @@
 .inputProblem--nextButton {
   margin: 20px !important;
 }
+
+.inputProblem--title {
+  font-weight: normal;
+  font-style: italic;
+}

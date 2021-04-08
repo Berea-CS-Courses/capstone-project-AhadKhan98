@@ -49,7 +49,11 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helperScreenCount === 3) {
-          return <FindMatch />;
+          return (
+            <FindMatch
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else {
           return <h1>In Chat Room</h1>;
         }
@@ -86,7 +90,11 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helpeeScreenCount === 4) {
-          return <FindMatch />;
+          return (
+            <FindMatch
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else {
           return <h1>In Chat Room</h1>;
         }
