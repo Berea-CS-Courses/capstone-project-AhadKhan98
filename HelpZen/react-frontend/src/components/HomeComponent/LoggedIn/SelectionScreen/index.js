@@ -80,7 +80,11 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helpeeScreenCount === 3) {
-          return <InputProblem />;
+          return (
+            <InputProblem
+              updateScreenAndUpdateState={updateScreenAndUpdateState}
+            />
+          );
         } else if (helpeeScreenCount === 4) {
           return <FindMatch />;
         } else {
