@@ -3,6 +3,10 @@
   flex: 1 0 21%;
 }
 
+.iconCard--card--selected {
+  background-color: rgba(128, 128, 128, 0.089) !important;
+}
+
 .iconCard--img {
   width: 100px;
   height: 100px;

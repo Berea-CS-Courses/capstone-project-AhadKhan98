@@ -29,7 +29,7 @@ function SelectionScreen({ user, userStatus }) {
       if (userStatus === "helpee") {
         setHelpeeScreenCount(helpeeScreenCount + 1);
       } else {
-        setHelperScreenCount(helpeeScreenCount + 1);
+        setHelperScreenCount(helperScreenCount + 1);
       }
       setMatchQuery({ ...matchQuery, ...data });
     };
@@ -40,12 +40,14 @@ function SelectionScreen({ user, userStatus }) {
           return (
             <SelectTechnology
               updateScreenAndUpdateState={updateScreenAndUpdateState}
+              userStatus={userStatus}
             />
           );
         } else if (helperScreenCount === 2) {
           return (
             <SelectLanguage
               updateScreenAndUpdateState={updateScreenAndUpdateState}
+              userStatus={userStatus}
             />
           );
         } else if (helperScreenCount === 3) {
@@ -75,12 +77,14 @@ function SelectionScreen({ user, userStatus }) {
           return (
             <SelectTechnology
               updateScreenAndUpdateState={updateScreenAndUpdateState}
+              userStatus={userStatus}
             />
           );
         } else if (helpeeScreenCount === 2) {
           return (
             <SelectLanguage
               updateScreenAndUpdateState={updateScreenAndUpdateState}
+              userStatus={userStatus}
             />
           );
         } else if (helpeeScreenCount === 3) {
