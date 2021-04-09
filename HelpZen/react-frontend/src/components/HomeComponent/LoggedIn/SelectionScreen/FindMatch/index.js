@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 
 import { LinearProgress } from "@material-ui/core";
 
@@ -11,7 +12,6 @@ function FindMatch({ updateScreenAndUpdateState }) {
   const findMatch = () => {
     setTimeout(() => {
       setMatchFound(true);
-      updateScreenAndUpdateState();
     }, 10000);
   };
 
@@ -39,7 +39,9 @@ function FindMatch({ updateScreenAndUpdateState }) {
           </h3>
         </>
       ) : (
-        <>Match found. Redirecting</>
+        <>
+          <Redirect to="/chat" />
+        </>
       )}
     </div>
   );

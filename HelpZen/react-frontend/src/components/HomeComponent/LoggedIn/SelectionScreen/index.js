@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { Redirect } from "react-router-dom";
 import "./styles.css";
 
 import SelectTechnology from "./SelectTechnology";
@@ -55,7 +55,7 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else {
-          return <h1>In Chat Room</h1>;
+          <Redirect to="/chat" />;
         }
       };
       return (
@@ -96,7 +96,7 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else {
-          return <h1>In Chat Room</h1>;
+          return <Redirect to="/chat" />;
         }
       };
       return (
