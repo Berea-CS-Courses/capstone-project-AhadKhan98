@@ -18,6 +18,7 @@ function SelectTechnology({ updateScreenAndUpdateState }) {
       <div className="selectTechnology--iconCard">
         {data.map((technology) => (
           <IconCard
+            key={technology.name}
             onClick={() => handleCardClick(technology.value)}
             technology={technology}
           />

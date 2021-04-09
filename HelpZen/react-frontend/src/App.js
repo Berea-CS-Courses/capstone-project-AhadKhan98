@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomeView from "./views/HomeView";
 
 function App() {
-  const [user, setUser] = useState({ firstName: "Ahad" });
+  const [user] = useState({ firstName: "Ahad" });
 
   return (
     <Router>

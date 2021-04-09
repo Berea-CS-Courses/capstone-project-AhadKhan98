@@ -1,6 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import logoImg from "../../assets/images/helpzen-logo.png";
 import "./styles.css";
 
@@ -10,7 +9,7 @@ function Footer({ user }) {
       return (
         <>
           <Typography className="footer--appBar--toolbar--leftItems--pagesText">
-            <a href="#">Home</a> | <a href="#how-it-works">How it Works</a> |{" "}
+            <a href="/">Home</a> | <a href="#how-it-works">How it Works</a> |{" "}
             <a href="#faqs">FAQs</a>
           </Typography>
         </>
@@ -19,7 +18,7 @@ function Footer({ user }) {
       return (
         <>
           <Typography className="footer--appBar--toolbar--leftItems--pagesText">
-            <a href="#">Edit Profile</a> |{" "}
+            <a href="/">Edit Profile</a> |{" "}
             <a href="#how-it-works">Helper Stats</a> |{" "}
             <a href="#faqs">Logout</a>
           </Typography>
