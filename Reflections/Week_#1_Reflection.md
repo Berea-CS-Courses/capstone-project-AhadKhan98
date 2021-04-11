@@ -21,6 +21,7 @@
 3. Create a table in MongoDB and add functionality for storing pending matches. Complete by Tuesday.
 4. Create the helper profile page in the frontend. Complete by Tuesday.
 5. Facilitate data required by the helper profile page from the database. Complete by Wednesday.
+6. Change all React components to query data from the API rather than being hardcoded. Complete by Friday.
 
 ## Resources for Next Week
 
