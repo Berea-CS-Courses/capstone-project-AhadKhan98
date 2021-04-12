@@ -24,3 +24,17 @@ exports.registerNewUser = async (userData) => {
     return false;
   }
 };
+
+exports.loginUser = async (userData) => {
+  if (userData.email && userData.password) {
+    const findUserInDb = await User.findOne({
+      email: userData.email,
+      password: userData.password,
+    }).exec();
+    if (!findUserInDb) {
+      return false;
+    } else {
+      return findUserInDb;
+    }
+  }
+};

@@ -42,6 +42,16 @@ app.post("/api/registerNewUser", (req, res) => {
   });
 });
 
+app.post("/api/loginUser", (req, res) => {
+  const userData = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  authController.loginUser(userData).then((result) => {
+    res.send(result);
+  });
+});
+
 // io.on("connection", (socket) => {
 //   console.log(`New connection established. ID:${socket.id}`);
 
