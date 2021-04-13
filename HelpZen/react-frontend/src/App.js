@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomeView from "./views/HomeView";
 import ChatView from "./views/ChatView";
+import HelperStatsView from "./views/HelperStatsView";
 
 function App() {
-  const [user] = useState({ firstName: "Ahad" });
+  const [user] = useState({ firstName: "Ahad", lastName: "Zai" });
 
   return (
     <Router>
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/chat">
           <ChatView />
+        </Route>
+        <Route path="/helper-stats">
+          <HelperStatsView user={user} />
         </Route>
       </Switch>
     </Router>

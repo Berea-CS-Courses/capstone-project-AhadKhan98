@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import logoImg from "../../assets/images/helpzen-logo.png";
 import "./styles.css";
@@ -19,7 +20,7 @@ function Footer({ user }) {
         <>
           <Typography className="footer--appBar--toolbar--leftItems--pagesText">
             <a href="/">Edit Profile</a> |{" "}
-            <a href="#how-it-works">Helper Stats</a> |{" "}
+            <Link to="/helper-stats">Helper Stats</Link> |{" "}
             <a href="#faqs">Logout</a>
           </Typography>
         </>

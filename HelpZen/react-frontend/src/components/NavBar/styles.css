@@ -67,3 +67,8 @@
 .navBar--appBar--rightItems--userProfile button {
   text-transform: none;
 }
+
+.navbar--link {
+  text-decoration: none !important;
+  color: black !important;
+}

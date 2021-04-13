@@ -21,6 +21,7 @@ function NavBar({
   loginModalHandler,
   registerModalHandler,
   handleUserStatusToggle,
+  screen,
 }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -63,11 +64,18 @@ function NavBar({
     } else {
       return (
         <>
-          <div className="navBar--appBar--rightItems--userStatus">
-            <Typography>Get Help</Typography>
-            <Switch onChange={handleUserStatusToggle} color="default" />
-            <Typography>Offer Help</Typography>
-          </div>
+          {screen ? (
+            <>null</>
+          ) : (
+            <>
+              <div className="navBar--appBar--rightItems--userStatus">
+                <Typography>Get Help</Typography>
+                <Switch onChange={handleUserStatusToggle} color="default" />
+                <Typography>Offer Help</Typography>
+              </div>
+            </>
+          )}
+
           <div className="navBar--appBar--rightItems--userProfile">
             <Button
               aria-controls="userMenu"
@@ -95,7 +103,11 @@ function NavBar({
               onClose={handleUserMenuClose}
             >
               <MenuItem>Edit Profile</MenuItem>
-              <MenuItem>Helper Stats</MenuItem>
+              <MenuItem>
+                <Link className="navbar--link" to="/helper-stats">
+                  Helper Stats
+                </Link>
+              </MenuItem>
               <MenuItem>Logout</MenuItem>
             </Menu>
           </div>
