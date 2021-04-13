@@ -12,6 +12,7 @@ app.use(cors());
 
 // Import Controllers
 const authController = require("./controllers/authController");
+const matchController = require("./controllers/matchController");
 
 // Initialize connection to the database
 const mongoose = require("mongoose");
@@ -48,6 +49,19 @@ app.post("/api/loginUser", (req, res) => {
     password: req.body.password,
   };
   authController.loginUser(userData).then((result) => {
+    res.send(result);
+  });
+});
+
+app.post("/api/addNewMatch", (req, res) => {
+  const matchData = {
+    userId: req.body.userId,
+    userStatus: req.body.userStatus,
+    technology: req.body.technology,
+    language: req.body.language,
+    problemStatement: req.body.problemStatement,
+  };
+  matchController.addNewMatchToQueue(matchData).then((result) => {
     res.send(result);
   });
 });
