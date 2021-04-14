@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  prevSessions: {
+    type: Array,
+    default: [],
+  },
 });
 
 const User = mongoose.model("users", UserSchema);

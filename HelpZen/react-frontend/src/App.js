@@ -30,7 +30,7 @@ function App() {
           <ChatView />
         </Route>
         <Route path="/helper-stats">
-          <HelperStatsView user={user} />
+          <HelperStatsView user={user} userLogoutHandler={userLogoutHandler} />
         </Route>
       </Switch>
     </Router>
