@@ -1,0 +1,74 @@
+.navBar--appBar {
+  background-color: white !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.navBar--logoImg {
+  object-fit: contain;
+  width: 150px;
+  margin: 10px 0px;
+}
+
+.navBar--appBar--leftItems {
+  flex-grow: 1;
+}
+
+.navBar--appBar--rightItems {
+  display: flex;
+  align-items: center;
+}
+
+.navBar--appBar--rightItems--registerButton {
+  color: #313131 !important;
+  border: 2px solid rgba(49, 49, 49, 0.5) !important;
+  margin-left: 10px !important;
+  font-weight: bold !important;
+}
+
+.navBar--appBar--rightItems--loginButton {
+  color: #00bfc0 !important;
+  border: 2px solid rgba(0, 191, 192, 0.5) !important;
+  margin-left: 10px !important;
+  font-weight: bold !important;
+}
+
+.navBar--appBar--rightItems--pageText {
+  color: black;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.navBar--appBar--rightItems--pageText:hover {
+  text-decoration: underline;
+}
+
+.MuiIconButton-label {
+  color: #313131;
+}
+
+.MuiSwitch-track {
+  background-color: #00bfc0 !important;
+}
+
+.navBar--appBar--rightItems--userStatus {
+  display: flex;
+  align-items: center;
+  color: black;
+  margin: 20px;
+}
+
+.navBar--appBar--rightItems--userProfile {
+  color: black;
+  display: flex;
+  cursor: pointer;
+}
+
+.navBar--appBar--rightItems--userProfile button {
+  text-transform: none;
+}
+
+.navbar--link {
+  text-decoration: none !important;
+  color: black !important;
+}

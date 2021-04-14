@@ -1,0 +1,14 @@
+.selectTechnology--iconCard {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selectTechnology--title {
+  font-weight: normal !important;
+  font-style: italic !important;
+}
+
+.selectTechnology--nextButton {
+  margin-top: 20px !important;
+  padding: 10px 10px !important;
+}

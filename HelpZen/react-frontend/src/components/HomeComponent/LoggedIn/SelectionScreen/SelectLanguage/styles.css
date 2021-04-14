@@ -1,0 +1,9 @@
+.selectLanguage--title {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.selectLanguage--iconCard {
+  display: flex;
+  flex-wrap: wrap;
+}
