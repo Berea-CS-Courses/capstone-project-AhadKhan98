@@ -33,3 +33,9 @@
 .registerModal--body button {
   margin-top: 50px;
 }
+
+.registerModal--error-text {
+  margin-top: 10px !important;
+  color: red !important;
+  font-style: italic !important;
+}

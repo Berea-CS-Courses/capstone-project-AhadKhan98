@@ -2,12 +2,16 @@ import React from "react";
 import LoggedIn from "../components/HomeComponent/LoggedIn";
 import LoggedOut from "../components/HomeComponent/LoggedOut";
 
-function HomeView({ user }) {
+function HomeView({ user, userLoginHandler, userLogoutHandler }) {
   let componentToRender = null;
   if (user) {
-    componentToRender = <LoggedIn user={user} />;
+    componentToRender = (
+      <LoggedIn user={user} userLogoutHandler={userLogoutHandler} />
+    );
   } else {
-    componentToRender = <LoggedOut user={user} />;
+    componentToRender = (
+      <LoggedOut user={user} userLoginHandler={userLoginHandler} />
+    );
   }
   return componentToRender;
 }

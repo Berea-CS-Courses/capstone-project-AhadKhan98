@@ -23,6 +23,7 @@
 }
 
 .footer--appBar--toolbar--leftItems--pagesText {
+  cursor: pointer;
   color: black;
 }
 
