@@ -1,0 +1,23 @@
+.iconCard--card {
+  cursor: pointer;
+  flex: 1 0 21%;
+}
+
+.iconCard--card--selected {
+  background-color: rgba(128, 128, 128, 0.089) !important;
+}
+
+.iconCard--img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.iconCard--card {
+  margin: 5px;
+  padding: 25px 0px;
+}
+
+.iconCard--title {
+  font-weight: bold !important;
+}

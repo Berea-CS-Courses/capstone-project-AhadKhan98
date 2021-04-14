@@ -1,0 +1,28 @@
+.home--loggedOut--contentArea--block1 {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+.home--loggedOut--contentArea--block1--leftItems {
+  flex: 0.6;
+}
+
+.home--loggedOut--contentArea--block1--leftItems--title {
+  font-size: 2.6rem;
+}
+
+.home--loggedOut--contentArea--block1--leftItems--paragraph {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.home--loggedOut--contentArea--block1--rightItems--image {
+  object-fit: contain;
+  position: relative;
+  width: 500px;
+}

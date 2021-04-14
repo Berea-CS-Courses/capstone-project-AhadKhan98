@@ -1,0 +1,35 @@
+.loginModal {
+  /* background-color: white !important; */
+  border: none !important;
+  width: 400px;
+  margin: auto !important;
+  margin-top: 200px !important;
+  height: 30vh;
+}
+
+.loginModal--body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: none !important;
+}
+
+.loginModal--body h2 {
+  padding-top: 15px;
+}
+
+.loginModal--body form {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 100px;
+}
+
+.loginModal--body button {
+  margin-top: 50px;
+}
