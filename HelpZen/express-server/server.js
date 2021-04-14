@@ -67,6 +67,14 @@ app.post("/api/loginUser", (req, res) => {
   });
 });
 
+app.post("/api/getUserById", (req, res) => {
+  const userId = req.body.userId;
+  authController.getUserById(userId).then((result) => {
+    console.log("RES IS", result);
+    res.send(result);
+  });
+});
+
 app.post("/api/addNewMatch", (req, res) => {
   const matchData = {
     userId: req.body.userId,

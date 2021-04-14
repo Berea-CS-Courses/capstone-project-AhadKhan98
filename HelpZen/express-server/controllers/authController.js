@@ -38,3 +38,16 @@ exports.loginUser = async (userData) => {
     }
   }
 };
+
+exports.getUserById = async (userId) => {
+  if (userId) {
+    const findUserInDb = await User.findById(userId)
+      .exec()
+      .catch(() => console.log("could not find user"));
+    if (!findUserInDb) {
+      return false;
+    } else {
+      return findUserInDb;
+    }
+  }
+};

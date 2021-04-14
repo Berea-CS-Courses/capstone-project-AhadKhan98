@@ -23,3 +23,14 @@ export const loginUser = (userData) => {
       return err;
     });
 };
+
+export const getUserById = (userId) => {
+  return axios
+    .post(API_URL + "/getUserById", { userId })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
