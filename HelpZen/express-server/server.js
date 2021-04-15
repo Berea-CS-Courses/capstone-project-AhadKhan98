@@ -82,6 +82,7 @@ app.post("/api/addNewMatch", (req, res) => {
     technology: req.body.technology,
     language: req.body.language,
     problemStatement: req.body.problemStatement,
+    codeReference: req.body.codeReference,
   };
   matchController.addNewMatchToQueue(matchData).then((result) => {
     res.send(result);

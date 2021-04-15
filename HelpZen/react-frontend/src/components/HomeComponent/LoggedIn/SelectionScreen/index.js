@@ -10,17 +10,20 @@ import FindMatch from "./FindMatch";
 function SelectionScreen({ user, userStatus }) {
   const [helperScreenCount, setHelperScreenCount] = useState(1);
   const [helpeeScreenCount, setHelpeeScreenCount] = useState(1);
-  const [matchQuery, setMatchQuery] = useState({ userStatus });
+  const [matchQuery, setMatchQuery] = useState({
+    userStatus,
+    userId: user._id,
+  });
 
   console.log("MATCH QUERY", matchQuery);
 
   useEffect(() => {
     if (userStatus === "helpee") {
       setHelperScreenCount(1);
-      setMatchQuery({ userStatus });
+      setMatchQuery({ ...matchQuery, userStatus });
     } else {
       setHelpeeScreenCount(1);
-      setMatchQuery({ userStatus });
+      setMatchQuery({ ...matchQuery, userStatus });
     }
   }, [userStatus]);
 
@@ -53,6 +56,7 @@ function SelectionScreen({ user, userStatus }) {
         } else if (helperScreenCount === 3) {
           return (
             <FindMatch
+              matchQuery={matchQuery}
               updateScreenAndUpdateState={updateScreenAndUpdateState}
             />
           );
@@ -96,6 +100,7 @@ function SelectionScreen({ user, userStatus }) {
         } else if (helpeeScreenCount === 4) {
           return (
             <FindMatch
+              matchQuery={matchQuery}
               updateScreenAndUpdateState={updateScreenAndUpdateState}
             />
           );

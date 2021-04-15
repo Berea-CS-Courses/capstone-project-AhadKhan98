@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const MatchSchema = mongoose.Schema({
   userId: {
     type: String,
-    unique: true,
+    unique: false,
     required: true,
   },
   userStatus: {
@@ -24,7 +24,12 @@ const MatchSchema = mongoose.Schema({
   problemStatement: {
     type: String,
     unique: false,
-    required: true,
+    required: false,
+  },
+  codeReference: {
+    type: String,
+    unique: false,
+    required: false,
   },
 });
 

@@ -16,7 +16,7 @@ function InputProblem({ updateScreenAndUpdateState }) {
 
   const handleNextButtonClick = () => {
     updateScreenAndUpdateState({
-      problem: problemValue,
+      problemStatement: problemValue,
       codeReference: codeReferenceValue,
     });
   };

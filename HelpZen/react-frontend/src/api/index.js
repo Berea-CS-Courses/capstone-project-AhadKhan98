@@ -34,3 +34,14 @@ export const getUserById = (userId) => {
       return err;
     });
 };
+
+export const addMatchQueryToDb = (matchData) => {
+  return axios
+    .post(API_URL + "/addNewMatch", matchData)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

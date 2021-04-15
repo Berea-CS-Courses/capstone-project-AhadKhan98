@@ -1,12 +1,12 @@
 const Match = require("../models/Match");
 
 exports.addNewMatchToQueue = async (matchData) => {
+  console.log(matchData.userId);
   if (
     matchData.userId &&
     matchData.userStatus &&
     matchData.technology &&
-    matchData.language &&
-    matchData.problemStatement
+    matchData.language
   ) {
     const newMatch = new Match(matchData);
     const result = await newMatch
@@ -16,7 +16,7 @@ exports.addNewMatchToQueue = async (matchData) => {
         return match;
       })
       .catch((err) => {
-        console.log("unable to save new match");
+        console.log("unable to save new match", err);
         return false;
       });
     return result;
