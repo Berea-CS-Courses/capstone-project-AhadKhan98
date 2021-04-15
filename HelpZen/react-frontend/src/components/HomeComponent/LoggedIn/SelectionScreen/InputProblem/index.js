@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Typography } from "@material-ui/core";
 import "./styles.css";
 
 function InputProblem({ updateScreenAndUpdateState }) {
   const [problemValue, setProblemValue] = useState("");
   const [codeReferenceValue, setCodeReferenceValue] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleCodeReferenceTextFieldChange = (e) => {
     setCodeReferenceValue(e.target.value);
@@ -15,10 +16,14 @@ function InputProblem({ updateScreenAndUpdateState }) {
   };
 
   const handleNextButtonClick = () => {
-    updateScreenAndUpdateState({
-      problemStatement: problemValue,
-      codeReference: codeReferenceValue,
-    });
+    if (problemValue && codeReferenceValue) {
+      updateScreenAndUpdateState({
+        problemStatement: problemValue,
+        codeReference: codeReferenceValue,
+      });
+    } else {
+      setErrorMessage("Please fill out all the fields.");
+    }
   };
 
   return (
@@ -55,6 +60,9 @@ function InputProblem({ updateScreenAndUpdateState }) {
       >
         Next
       </Button>
+      <Typography className="inputProblem--error-text" variant="body2">
+        {errorMessage}
+      </Typography>
     </div>
   );
 }
