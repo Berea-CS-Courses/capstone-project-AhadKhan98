@@ -1,9 +1,48 @@
-import React from "react";
-import { Modal, Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { Modal, Button, Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import "./styles.css";
 
-function RegisterModal({ open, handleToggle }) {
+import { registerNewUser } from "../../../api";
+
+function RegisterModal({ open, handleToggle, userLoginHandler }) {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleFormInputChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSignupButtonClick = () => {
+    if (
+      formData.firstName &&
+      formData.lastName &&
+      formData.email &&
+      formData.password
+    ) {
+      registerNewUser(formData)
+        .then((response) => {
+          if (response.data) {
+            userLoginHandler(response.data);
+          } else {
+            setErrorMessage("A user with that email already exists.");
+          }
+        })
+        .catch((err) => {
+          console.log("Error occurred!");
+          setErrorMessage("An unexpected error occurred.");
+        });
+    } else {
+      setErrorMessage("Please make sure all fields have been entered.");
+    }
+  };
+
   return (
     <div>
       <Modal
@@ -16,13 +55,37 @@ function RegisterModal({ open, handleToggle }) {
         <div className="registerModal--body">
           <h2>Register</h2>
           <form>
-            <TextField id="firstName" label="First Name" />
-            <TextField id="lastName" label="Last Name" />
-            <TextField id="email" label="Email" />
-            <TextField type="password" id="password" label="Password" />
-            <Button color="primary" variant="contained">
+            <TextField
+              onChange={handleFormInputChange}
+              id="firstName"
+              label="First Name"
+            />
+            <TextField
+              onChange={handleFormInputChange}
+              id="lastName"
+              label="Last Name"
+            />
+            <TextField
+              onChange={handleFormInputChange}
+              id="email"
+              label="Email"
+            />
+            <TextField
+              onChange={handleFormInputChange}
+              type="password"
+              id="password"
+              label="Password"
+            />
+            <Button
+              onClick={handleSignupButtonClick}
+              color="primary"
+              variant="contained"
+            >
               Sign Up
             </Button>
+            <Typography className="registerModal--error-text" variant="body2">
+              {errorMessage}
+            </Typography>
           </form>
         </div>
       </Modal>

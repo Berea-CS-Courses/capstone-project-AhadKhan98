@@ -12,7 +12,7 @@ import BlockThree from "./BlockThree";
 import LoginModal from "../../Modals/LoginModal";
 import RegisterModal from "../../Modals/RegisterModal";
 
-function LoggedOut({ user }) {
+function LoggedOut({ user, userLoginHandler }) {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
@@ -26,8 +26,13 @@ function LoggedOut({ user }) {
 
   return (
     <div className="home--loggedOut">
-      <LoginModal open={loginModalOpen} handleToggle={handleLoginModalToggle} />
+      <LoginModal
+        userLoginHandler={userLoginHandler}
+        open={loginModalOpen}
+        handleToggle={handleLoginModalToggle}
+      />
       <RegisterModal
+        userLoginHandler={userLoginHandler}
         open={registerModalOpen}
         handleToggle={handleRegisterModalToggle}
       />

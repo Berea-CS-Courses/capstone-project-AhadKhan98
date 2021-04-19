@@ -10,3 +10,9 @@
   font-weight: normal;
   font-style: italic;
 }
+
+.inputProblem--error-text {
+  font-style: italic !important;
+  color: red !important;
+  margin-top: 10px !important;
+}

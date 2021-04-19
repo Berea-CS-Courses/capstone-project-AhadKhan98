@@ -4,7 +4,7 @@ import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import logoImg from "../../assets/images/helpzen-logo.png";
 import "./styles.css";
 
-function Footer({ user }) {
+function Footer({ user, userLogoutHandler }) {
   const renderLeftItems = () => {
     if (!user) {
       return (
@@ -21,7 +21,7 @@ function Footer({ user }) {
           <Typography className="footer--appBar--toolbar--leftItems--pagesText">
             <a href="/">Edit Profile</a> |{" "}
             <Link to="/helper-stats">Helper Stats</Link> |{" "}
-            <a href="#faqs">Logout</a>
+            <a onClick={userLogoutHandler}>Logout</a>
           </Typography>
         </>
       );

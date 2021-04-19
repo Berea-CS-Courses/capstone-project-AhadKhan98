@@ -33,3 +33,9 @@
 .loginModal--body button {
   margin-top: 50px;
 }
+
+.loginModal--error-text {
+  margin-top: 10px !important;
+  font-style: italic !important;
+  color: red !important;
+}

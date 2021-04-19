@@ -3,17 +3,19 @@ import { Redirect } from "react-router-dom";
 
 import { LinearProgress } from "@material-ui/core";
 
+import { addMatchQueryToDb } from "../../../../../api/";
+
 import "./styles.css";
 
-function FindMatch({ updateScreenAndUpdateState }) {
+function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [matchFound, setMatchFound] = useState(false);
 
-  const findMatch = () => {
-    setTimeout(() => {
-      setMatchFound(true);
-    }, 10000);
-  };
+  // const findMatch = () => {
+  //   setTimeout(() => {
+  //     setMatchFound(true);
+  //   }, 10000);
+  // };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,7 +25,10 @@ function FindMatch({ updateScreenAndUpdateState }) {
   }, []);
 
   useEffect(() => {
-    findMatch();
+    addMatchQueryToDb(matchQuery).then((res) => {
+      console.log("RESULT", res);
+    });
+    // findMatch();
   }, []);
 
   return (

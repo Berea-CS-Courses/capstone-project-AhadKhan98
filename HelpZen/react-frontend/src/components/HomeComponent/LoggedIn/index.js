@@ -7,7 +7,7 @@ import SelectionScreen from "./SelectionScreen";
 
 import "./styles.css";
 
-function LoggedIn({ user }) {
+function LoggedIn({ user, userLogoutHandler }) {
   const [userStatus, setUserStatus] = useState("helpee");
 
   const handleUserStatusToggle = () => {
@@ -21,11 +21,15 @@ function LoggedIn({ user }) {
   console.log("User Status Is", userStatus);
   return (
     <div className="home--loggedIn--container">
-      <NavBar user={user} handleUserStatusToggle={handleUserStatusToggle} />
+      <NavBar
+        user={user}
+        handleUserStatusToggle={handleUserStatusToggle}
+        userLogoutHandler={userLogoutHandler}
+      />
       <div className="home--loggedIn--container--selectionScreen">
         <SelectionScreen userStatus={userStatus} user={user} />
       </div>
-      <Footer user={user} />
+      <Footer user={user} userLogoutHandler={userLogoutHandler} />
     </div>
   );
 }

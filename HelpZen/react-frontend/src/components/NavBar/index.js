@@ -22,6 +22,7 @@ function NavBar({
   registerModalHandler,
   handleUserStatusToggle,
   screen,
+  userLogoutHandler,
 }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -108,7 +109,7 @@ function NavBar({
                   Helper Stats
                 </Link>
               </MenuItem>
-              <MenuItem>Logout</MenuItem>
+              <MenuItem onClick={userLogoutHandler}>Logout</MenuItem>
             </Menu>
           </div>
         </>
