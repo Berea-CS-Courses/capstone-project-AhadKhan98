@@ -1,3 +1,8 @@
+/**
+ * Calls the API to find a match
+ * Displays loading screen until a match has been found
+ * Displays error if no match found
+ */
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
@@ -17,6 +22,7 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
   //   }, 10000);
   // };
 
+  // Updates the secondsElapsed in state every second
   useEffect(() => {
     const interval = setInterval(() => {
       setSecondsElapsed((secondsElapsed) => secondsElapsed + 1);
@@ -24,10 +30,12 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
     return () => clearInterval(interval);
   }, []);
 
+  // Adds the matchQuery in state to the db using API
   useEffect(() => {
     addMatchQueryToDb(matchQuery).then((res) => {
       console.log("RESULT", res);
     });
+    // TODO: Start finding match
     // findMatch();
   }, []);
 
