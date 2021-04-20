@@ -9,7 +9,6 @@ const Match = require("../models/Match");
  * @returns Response 
  */
 exports.addNewMatchToQueue = async (matchData) => {
-  console.log(matchData.userId);
   if ( // Check if required fields exist in matchData
     matchData.userId &&
     matchData.userStatus &&

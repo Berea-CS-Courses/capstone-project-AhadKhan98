@@ -36,6 +36,11 @@ const MatchSchema = mongoose.Schema({
     unique: false,
     required: false,
   },
+  codeLink: {
+    type: String,
+    unique: false,
+    required: false,
+  }
 });
 
 const Match = mongoose.model("matches", MatchSchema);

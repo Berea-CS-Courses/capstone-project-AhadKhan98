@@ -107,6 +107,7 @@ app.post("/api/addNewMatch", (req, res) => {
     language: req.body.language,
     problemStatement: req.body.problemStatement,
     codeReference: req.body.codeReference,
+    codeLink: req.body.codeLink,
   };
   matchController.addNewMatchToQueue(matchData).then((result) => {
     res.send(result);
