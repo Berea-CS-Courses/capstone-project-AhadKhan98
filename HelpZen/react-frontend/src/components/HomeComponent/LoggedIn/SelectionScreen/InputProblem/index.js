@@ -36,7 +36,7 @@ function InputProblem({ updateScreenAndUpdateState }) {
         codeLink: codeLinkValue,
       });
     } else {
-      setErrorMessage("Please fill out all the fields."); // Displays error if fields are missing.
+      setErrorMessage("Please fill out all the required fields."); // Displays error if fields are missing.
     }
   };
 
