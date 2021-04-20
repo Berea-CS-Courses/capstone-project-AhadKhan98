@@ -1,3 +1,8 @@
+/* 
+Models how the Match object would appear in MongoDB
+*/
+
+
 const mongoose = require("mongoose");
 
 const MatchSchema = mongoose.Schema({
