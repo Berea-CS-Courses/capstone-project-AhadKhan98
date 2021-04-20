@@ -1,3 +1,6 @@
+/**
+ * Renders different components to facilitate the selection process
+ */
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import "./styles.css";
@@ -8,16 +11,16 @@ import InputProblem from "./InputProblem";
 import FindMatch from "./FindMatch";
 
 function SelectionScreen({ user, userStatus }) {
-  const [helperScreenCount, setHelperScreenCount] = useState(1);
-  const [helpeeScreenCount, setHelpeeScreenCount] = useState(1);
+  const [helperScreenCount, setHelperScreenCount] = useState(1); // Counter to track progress for helpers
+  const [helpeeScreenCount, setHelpeeScreenCount] = useState(1); // Counter to track progress for helpees
   const [matchQuery, setMatchQuery] = useState({
     userStatus,
     userId: user._id,
-  });
+  }); // Match query the gets update after each selection and gets added to db at the end of selection process
 
   console.log("MATCH QUERY", matchQuery);
 
-  useEffect(() => {
+  useEffect(() => { // Resets progress every time user status is changed
     if (userStatus === "helpee") {
       setHelperScreenCount(1);
       setMatchQuery({ ...matchQuery, userStatus });
@@ -27,7 +30,9 @@ function SelectionScreen({ user, userStatus }) {
     }
   }, [userStatus]);
 
+  // Renders appropriate component based on progress tracker in state
   const renderSelectionScreen = () => {
+    // Stores the selection in state and updates the screen to the next step
     const updateScreenAndUpdateState = (data) => {
       if (userStatus === "helpee") {
         setHelpeeScreenCount(helpeeScreenCount + 1);
@@ -37,7 +42,8 @@ function SelectionScreen({ user, userStatus }) {
       setMatchQuery({ ...matchQuery, ...data });
     };
 
-    if (userStatus === "helper") {
+    // Renders components based on userStatus and progress tracker
+    if (userStatus === "helper") { // user is a HELPER
       const renderScreen = () => {
         if (helperScreenCount === 1) {
           return (
@@ -75,7 +81,7 @@ function SelectionScreen({ user, userStatus }) {
           {renderScreen()}
         </div>
       );
-    } else if (userStatus === "helpee") {
+    } else if (userStatus === "helpee") { // user is a HELPEE
       const renderScreen = () => {
         if (helpeeScreenCount === 1) {
           return (

@@ -1,3 +1,7 @@
+/**
+ * Renders an icon card for each item in data
+ * Enables clicking functionality
+ */
 import React, { useState } from "react";
 
 import { Button } from "@material-ui/core";
@@ -8,12 +12,14 @@ import { data } from "./data";
 import "./styles.css";
 
 function SelectLanguage({ userStatus, updateScreenAndUpdateState }) {
-  const [languageSelections, setLanguageSelections] = useState([]);
+  const [languageSelections, setLanguageSelections] = useState([]); // Stores all language selections in state
 
+  // Used when userStatus="helpee". Updates the screen and stores selection
   const handleCardClick = (value) => {
     updateScreenAndUpdateState({ language: value });
   };
 
+  // Used when userStatus="helper". Allows multiple selections and stores them in state.
   const handleCardSelect = (value) => {
     if (languageSelections.includes(value)) {
       const newLanguageSelections = [...languageSelections];
@@ -25,6 +31,7 @@ function SelectLanguage({ userStatus, updateScreenAndUpdateState }) {
     }
   };
 
+  // Used when userStatus="helper". Updates the screen and updates the matchQuery in state.
   const handleNextButtonClick = () => {
     updateScreenAndUpdateState({ language: languageSelections });
   };
@@ -32,13 +39,14 @@ function SelectLanguage({ userStatus, updateScreenAndUpdateState }) {
   return (
     <div className="selectLanguage--container">
       <h3 className="selectLanguage--title">
-        {userStatus === "helpee" ? (
+        {userStatus === "helpee" ? ( // Renders text based on userStatus
           <>Please select your preferred language below</>
         ) : (
           <>Please select all languages that you are proficient in</>
         )}
       </h3>
       <div className="selectLanguage--iconCard">
+        {/* Provides a different onClick function to IconCard component based on userStatus */}
         {userStatus === "helpee" ? (
           <>
             {data.map((language) => (
@@ -59,6 +67,7 @@ function SelectLanguage({ userStatus, updateScreenAndUpdateState }) {
           </>
         )}
       </div>
+      {/* Displays the next button only when multiple selections are allowed */}
       {userStatus === "helper" ? (
         <Button
           onClick={handleNextButtonClick}
