@@ -5,6 +5,8 @@ const Match = require("../models/Match");
 
 /**
  * Takes in matchData object, checks if necessary fields exist, and creates a match in MongoDB
+ * If a Match object already exists with the same userId, the object is updated and no new objects are created
+ * Only one match object per user will be added
  * @param matchData Object
  * @returns Response 
  */
@@ -15,8 +17,17 @@ exports.addNewMatchToQueue = async (matchData) => {
     matchData.technology &&
     matchData.language
   ) {
-    const newMatch = new Match(matchData); // Create a new instance of Match model 
-    const result = await newMatch // Stores result from trying to save the match to MongoDB
+    const prevMatchWithUserId = await Match.findOne({userId: matchData.userId}).exec()
+    let result = null;
+    // Check if the user has already created a match before
+    if (prevMatchWithUserId) { 
+      result = await prevMatchWithUserId.updateOne(matchData).then(() => { // Update the existing match object for the user
+        return Match.findOne({userId: matchData.userId}).exec()
+      })
+      console.log("Updated Match Object");
+    } else {
+      const newMatch = new Match(matchData); // Create a new instance of Match model 
+      result = await newMatch // Stores result from trying to save the match to MongoDB
       .save()
       .then((match) => {
         console.log("New match added");
@@ -26,6 +37,7 @@ exports.addNewMatchToQueue = async (matchData) => {
         console.log("unable to save new match", err);
         return false; // Return false if an error occurred
       });
+    }
     return result; // Returns the result from saving match to MongoDB.
   } else {
     console.log("match data incorrect");
@@ -72,7 +84,7 @@ exports.findMatchForId = async (matchId) => {
       const userStatusToFind = (matchObject1.userStatus === "helpee" ? "helper": "helpee")
       const matchObject2 = await Match.findOne({userStatus: userStatusToFind, technology: matchObject1.technology,language: matchObject1.language})
       .exec()
-      .catch(err => false);
+      .catch(() => false);
       return (matchObject2 ? matchObject2: false); // Return object if match found otherwise return false
 
     } else {
