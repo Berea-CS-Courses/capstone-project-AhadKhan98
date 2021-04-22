@@ -114,6 +114,17 @@ app.post("/api/addNewMatch", (req, res) => {
   });
 });
 
+/**
+ * Takes Match ID from request
+ * Deletes match in MongoDB
+ */
+app.post("/api/deleteMatchById", (req,res) => {
+  const matchId = req.body.matchId;
+  matchController.deleteMatchById(matchId).then((result) => {
+    res.send(result);
+  })
+})
+
 // TODO: Uncomment when working on sockets implementation
 // io.on("connection", (socket) => {
 //   console.log(`New connection established. ID:${socket.id}`);

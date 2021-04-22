@@ -32,3 +32,25 @@ exports.addNewMatchToQueue = async (matchData) => {
     return false; // Return false if incorrect/missing data provided.
   }
 };
+
+/**
+ * Takes in a Match ID and deletes it from MongoDB
+ * @param  matchId String
+ * @returns Response
+ */
+exports.deleteMatchById = async (matchId) => {
+  if (matchId) {
+    const findMatchInDb = await Match.findById(matchId)
+    .deleteOne()
+    .exec()
+    .catch(() => false); // Returns false if an error is encountered
+    console.log("RESULT ", findMatchInDb)
+    if (!findMatchInDb) {
+      return false;
+    } else {
+      return true; // Returns true if object was deleted
+    }
+  } else {
+    return false; // Returns false if empty matchId
+  }
+}
