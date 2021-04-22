@@ -54,3 +54,34 @@ exports.deleteMatchById = async (matchId) => {
     return false; // Returns false if empty matchId
   }
 }
+
+/**
+ * Takes in matchId to find a match for the object
+ * Keeps running until timesout or finds match
+ * @param  matchId String
+ * @returns Match Object
+ */
+exports.findMatchForId = async (matchId) => {
+  if (matchId) {
+    matchObject1 = await Match.findById(matchId)
+    .exec()
+    .catch(err => false);
+    
+    if (matchObject1) {
+      // Object valid. Find match below
+      const userStatusToFind = (matchObject1.userStatus === "helpee" ? "helper": "helpee")
+      const matchObject2 = await Match.findOne({userStatus: userStatusToFind, technology: matchObject1.technology,language: matchObject1.language})
+      .exec()
+      .catch(err => false);
+      return (matchObject2 ? matchObject2: false); // Return object if match found otherwise return false
+
+    } else {
+      // Object invalid. Return false
+      return false;
+    }
+
+  } else {
+    // Invalid/incomplete matchId object
+    return false
+  }
+}
