@@ -69,3 +69,14 @@ export const addMatchQueryToDb = (matchData) => {
       return err;
     });
 };
+
+export const findMatchForId = (matchId) => {
+  return axios
+  .post(API_URL + "/findMatchForId", matchId)
+  .then((response) => {
+    return response
+  })
+  .catch(err => {
+    return err;
+  })
+}

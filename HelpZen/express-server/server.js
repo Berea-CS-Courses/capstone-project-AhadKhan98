@@ -126,7 +126,7 @@ app.post("/api/deleteMatchById", (req,res) => {
 })
 
 
-app.post("/api/findMatch", (req,res) => {
+app.post("/api/findMatchForId", (req,res) => {
   const matchId = req.body.matchId;
   matchController.findMatchForId(matchId).then((result) => {
     res.send(result);

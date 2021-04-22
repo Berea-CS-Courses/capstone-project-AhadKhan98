@@ -8,19 +8,13 @@ import { Redirect } from "react-router-dom";
 
 import { LinearProgress } from "@material-ui/core";
 
-import { addMatchQueryToDb } from "../../../../../api/";
+import { addMatchQueryToDb, findMatchForId } from "../../../../../api/";
 
 import "./styles.css";
 
 function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [matchFound, setMatchFound] = useState(false);
-
-  // const findMatch = () => {
-  //   setTimeout(() => {
-  //     setMatchFound(true);
-  //   }, 10000);
-  // };
 
   // Updates the secondsElapsed in state every second
   useEffect(() => {
@@ -30,14 +24,31 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Adds the matchQuery in state to the db using API
+  // Adds the matchQuery in state to the db and finds a match using API
   useEffect(() => {
-    addMatchQueryToDb(matchQuery).then((res) => {
-      console.log("RESULT", res);
-    });
-    // TODO: Start finding match
-    // findMatch();
-  }, []);
+    const addMatchToDbAsync = async () => {
+      const currentMatchObject = await addMatchQueryToDb(matchQuery)
+      return currentMatchObject.data;
+    }
+
+    let interval = null;
+    
+      addMatchToDbAsync().then(currentMatchObject => {
+        interval = setInterval(() => {
+          console.log("Trying to find match..");
+        findMatchForId({matchId: currentMatchObject._id}).then(response => {
+          if(response.data) {
+            console.log("Found Match");
+            clearInterval(interval);
+            setMatchFound(response.data);
+          }
+          
+        })
+        }, 5000)
+      })
+      return () => clearInterval(interval);
+  }, [])
+  
 
   return (
     <div className="findmatch--container">
@@ -53,7 +64,14 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
         </>
       ) : (
         <>
-          <Redirect to="/chat" />
+        <h4 className="findmatch--title">
+            Found Match!<br />
+            User ID: {matchFound.userId} <br />
+            userStatus: {matchFound.userStatus} <br />
+            Technology: {matchFound.technology} <br />
+            Language: {matchFound.language}
+          </h4>
+          {/* <Redirect to="/chat" /> */}
         </>
       )}
     </div>
