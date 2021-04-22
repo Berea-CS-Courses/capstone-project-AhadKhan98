@@ -14,6 +14,7 @@ import "./styles.css";
 
 function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [currentMatchQuery, setCurrentMatchQuery] = useState(false);
   const [matchFound, setMatchFound] = useState(false);
 
   // Updates the secondsElapsed in state every second
@@ -28,6 +29,7 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
   useEffect(() => {
     const addMatchToDbAsync = async () => {
       const currentMatchObject = await addMatchQueryToDb(matchQuery)
+      setCurrentMatchQuery(currentMatchObject.data);
       return currentMatchObject.data;
     }
 
@@ -64,14 +66,7 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
         </>
       ) : (
         <>
-        <h4 className="findmatch--title">
-            Found Match!<br />
-            User ID: {matchFound.userId} <br />
-            userStatus: {matchFound.userStatus} <br />
-            Technology: {matchFound.technology} <br />
-            Language: {matchFound.language}
-          </h4>
-          {/* <Redirect to="/chat" /> */}
+          <Redirect to={{pathname:"/chat", session:{currentMatchQuery, matchFound}}}  />
         </>
       )}
     </div>

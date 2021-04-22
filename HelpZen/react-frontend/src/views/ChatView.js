@@ -6,10 +6,10 @@ import React from "react";
 
 import ChatComponent from "../components/ChatComponent";
 
-function ChatView() {
+function ChatView(props) {
   return (
     <div>
-      <ChatComponent />
+      <ChatComponent session={props.location.session}/>
     </div>
   );
 }
