@@ -56,7 +56,6 @@ exports.deleteMatchById = async (matchId) => {
     .deleteOne()
     .exec()
     .catch(() => false); // Returns false if an error is encountered
-    console.log("RESULT ", findMatchInDb)
     if (!findMatchInDb) {
       return false;
     } else {
@@ -69,7 +68,6 @@ exports.deleteMatchById = async (matchId) => {
 
 /**
  * Takes in matchId to find a match for the object
- * Keeps running until timesout or finds match
  * @param  matchId String
  * @returns Match Object
  */
