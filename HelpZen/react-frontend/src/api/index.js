@@ -70,6 +70,11 @@ export const addMatchQueryToDb = (matchData) => {
     });
 };
 
+/**
+ * Takes in a match id and finds
+ * @param matchId String containing the id for the match object
+ * @returns Match object if match is available else false
+ */
 export const findMatchForId = (matchId) => {
   return axios
   .post(API_URL + "/findMatchForId", matchId)
@@ -77,6 +82,22 @@ export const findMatchForId = (matchId) => {
     return response
   })
   .catch(err => {
+    return err;
+  })
+}
+
+/**
+ * Takes in match id and delete the object from MongoDB
+ * @param matchId String containing the id for the match object
+ * @returns True/False indicating success or failure of object deletion
+ */
+export const deleteMatchById = (matchId) => {
+  return axios
+  .post(API_URL + "/deleteMatchById", matchId)
+  .then(response => {
+    return response
+  }) 
+  .catch((err) => {
     return err;
   })
 }
