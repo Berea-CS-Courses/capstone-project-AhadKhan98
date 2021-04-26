@@ -12,7 +12,7 @@ import { addMatchQueryToDb, findMatchForId } from "../../../../../api/";
 
 import "./styles.css";
 
-function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
+function FindMatch({ user, matchQuery }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
   const [currentMatchQuery, setCurrentMatchQuery] = useState(false);
   const [matchFound, setMatchFound] = useState(false);
@@ -66,7 +66,7 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
         </>
       ) : (
         <>
-          <Redirect to={{pathname:"/chat", session:{currentMatchQuery, matchFound}}}  />
+          <Redirect to={{pathname:"/chat", user, session:{currentMatchQuery, matchFound}}}  />
         </>
       )}
     </div>

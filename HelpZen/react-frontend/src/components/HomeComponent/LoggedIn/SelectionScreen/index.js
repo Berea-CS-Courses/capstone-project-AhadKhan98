@@ -63,7 +63,7 @@ function SelectionScreen({ user, userStatus }) {
           return (
             <FindMatch
               matchQuery={matchQuery}
-              updateScreenAndUpdateState={updateScreenAndUpdateState}
+              user={user}
             />
           );
         } else {
@@ -107,7 +107,7 @@ function SelectionScreen({ user, userStatus }) {
           return (
             <FindMatch
               matchQuery={matchQuery}
-              updateScreenAndUpdateState={updateScreenAndUpdateState}
+              user={user}
             />
           );
         } else {

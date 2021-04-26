@@ -75,7 +75,7 @@ function NavBar({
       return (
         <>
           {screen ? ( // Does not render toggle button if not on the home screen
-            <>null</>
+            null
           ) : (
             <>
               <div className="navBar--appBar--rightItems--userStatus">

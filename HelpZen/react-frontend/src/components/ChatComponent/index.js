@@ -1,16 +1,54 @@
 /**
  * Renders UI for chat room 
- * Restricts acces to only users that have been matched
+ * Restricts access to only users that have been matched
  */
 import React from "react";
-
+import Footer from '../Footer';
+import NavBar from '../NavBar';
 import "./styles.css";
 
-function ChatComponent({session}) {
+function ChatComponent({user, session}) {
+  console.log("User Object", user);
+  console.log("Session Object", session);
+
   return (
-    <div className="chat-component--container">
-      <h1>Chat Room</h1>
-      <h4>{session.currentMatchQuery.userStatus} Information</h4>
+    <div className="chat-component">
+      <NavBar screen={true} user={user}/>
+      <div className="chat-component--container">
+        <div className="chat-component--header">
+          <h1>Chat Session</h1>
+          <h4>Time Elapsed: 0:00</h4>
+          <button>End Session</button>
+        </div>
+        <div className="chat-component--body">
+          <div className="chat-component--body--columns">
+          <div className="chat-component--body--left">
+            <div className="chat-component--body--left--members">
+              Members
+            </div>
+            <div className="chat-component--body--left--technologies">
+              Technologies
+            </div>
+          </div>
+          <div className="chat-component--body--center">
+            CENTER
+          </div>
+          </div>
+          <div className="chat-component--body--textbox">
+            TextBox
+          </div>
+        </div>
+      </div>
+      <Footer user={user} />
+    </div>
+  );
+}
+
+export default ChatComponent;
+
+
+/*
+<h4>{session.currentMatchQuery.userStatus} Information</h4>
       <p>
         Match ID: {session.currentMatchQuery._id} <br />
       User ID: {session.currentMatchQuery.userId} <br />
@@ -30,8 +68,4 @@ function ChatComponent({session}) {
       Problem Statement: {session.matchFound.problemStatement} <br />
       Code Link: {session.matchFound.codeLink}
       </p>
-    </div>
-  );
-}
-
-export default ChatComponent;
+*/
