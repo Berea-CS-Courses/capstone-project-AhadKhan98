@@ -2,7 +2,7 @@
 
 ## Accomplishments:
 
-1. Created a basic matching algorithm to identify and match users.
+1. Created a basic matching algorithm to identify and match users. 
 2. Deleted objects from the 'match' table when a match is found.
 3. Created a simple UI for the Chat Room component.
 4. Added code base URL option on helpee screen, when submitting problem statement.
@@ -15,11 +15,12 @@
 
 ## Goals for Next Week
 
-1. Finish the Chat UI.
-2. Render data from the session object to the Chat component.
-3. Create a table in MongoDB that stores each matched pair and their information.
-4. Attach active sessions to user objects and force redirect them to the chat room until the session is complete.
-5. Remove active sessions from user objects once the session has been ended.
+1. Finish the Chat UI. Complete by Tuesday
+2. Render data from the session object to the Chat component. Complete by Tuesday
+3. Fix deletion bug in ChatView. Complete by Wednesday.
+4. Create a table in MongoDB that stores each matched pair and their information. Complete by Wednesday.
+5. Attach active sessions to user objects and force redirect them to the chat room until the session is complete. Complete by Friday.
+6. Remove active sessions from user objects once the session has been ended. Complete by Friday.
 
 ## Resources for Next Week
 
