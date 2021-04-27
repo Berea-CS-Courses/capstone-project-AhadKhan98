@@ -10,10 +10,11 @@ import ChatComponent from "../components/ChatComponent";
 
 function ChatView(props) {
   const session = props.location.session; // Gets session object form data being passed via props
-  const user = props.location.user?.user // Gets user object from data being passed via props
+  const user = props.location.userObject?.user // Gets user object from data being passed via props
+  console.log("Props in ChatView", session, user)
 
-  // Redirects to homepage if no session object was given through props
-  if (!session) {
+  // Redirects to homepage if no session object or no user object was given through props
+  if (!session || !user) {
     return <Redirect to="/" />
   }
 

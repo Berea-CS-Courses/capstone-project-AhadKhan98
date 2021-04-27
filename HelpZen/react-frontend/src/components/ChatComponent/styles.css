@@ -13,7 +13,6 @@
 
 .chat-component--header {
     margin: 0px;
-    background-color: rgba(207, 207, 207, 0.157);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,7 +36,6 @@
 }
 
 .chat-component--body--left {
-    border: 1px solid red;
     height: 60vh;
     width: 15vw;
     display: flex;
@@ -45,27 +43,47 @@
     justify-content: space-between;
 }
 
-.chat-component--body--left--members {
-    border: 1px solid black;
+.chat-component--body--left--members, .chat-component--body--left--technologies  {
+    background-color: rgba(211, 211, 211, 0.335);
+    border-radius: 10px;
     height: 100%;
+    margin-top: 3px;
 }
 
-.chat-component--body--left--technologies {
-    border: 1px solid black;
-    height: 100%;
+.chat-component--body--left--members--headertext, .chat-component--body--left--technologies--headertext {
+    margin: 5px !important;
+    text-align: center;
+    text-decoration: underline !important;
+    font-size: 1.2rem !important;
 }
+
 
 .chat-component--body--textbox {
     position: absolute;
     bottom: 0;
-    margin-bottom: 16px;
+    margin-bottom: 30px;
     width: 97vw;
-    border: 1px solid orange;
     height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .chat-component--body--center {
-    border: 1px solid blue;
+    margin-left: 3px;
+    background-color: rgba(19, 76, 199, 0.068);
     height: 60vh;
     width: 100%;
+    border-radius: 10px;
 }
+
+.chat-component--body--left--members--bodytext, .chat-component--body--left--technologies--bodytext {
+    margin-left: 10px !important;
+    margin-top: 20px !important;
+}
+
+.chat-component--body--textbox--sendButton {
+    margin: 0px 5px !important;
+    padding: 15px 0px !important;
+}
+

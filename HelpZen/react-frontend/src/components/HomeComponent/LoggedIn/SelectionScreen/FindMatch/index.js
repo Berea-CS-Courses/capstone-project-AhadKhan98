@@ -66,7 +66,7 @@ function FindMatch({ user, matchQuery }) {
         </>
       ) : (
         <>
-          <Redirect to={{pathname:"/chat", user, session:{currentMatchQuery, matchFound}}}  />
+          <Redirect to={{pathname:"/chat", userObject:{user}, session:{currentMatchQuery, matchFound}}}  />
         </>
       )}
     </div>
