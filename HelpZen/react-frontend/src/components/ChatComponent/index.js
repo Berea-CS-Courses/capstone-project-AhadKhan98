@@ -91,13 +91,70 @@ function ChatComponent({ user, session }) {
     }
   };
 
+  const renderAdminText = () => {
+    const messageToRender = (
+      <div>
+        <Typography style={{ fontWeight: "bold", textAlign: "center" }}>
+          Hello and welcome to helpzen's chat room!
+        </Typography>
+        <Typography style={{ textAlign: "center" }}>
+          {helpee?.firstName} is looking for help from {helper?.firstName}
+        </Typography>
+        <Typography style={{ textAlign: "center" }}>
+          Problem Statement:{" "}
+          {session.currentMatchQuery.userStatus === "helpee" ? (
+            <>{session.currentMatchQuery.problemStatement}</>
+          ) : (
+            <>{session.matchFound.problemStatement}</>
+          )}
+        </Typography>
+        <Typography style={{ textAlign: "center" }}>
+          Code Reference:{" "}
+          {session.currentMatchQuery.userStatus === "helpee" ? (
+            <>{session.currentMatchQuery.codeReference}</>
+          ) : (
+            <>{session.matchFound.codeReference}</>
+          )}
+        </Typography>
+        <Typography style={{ textAlign: "center" }}>
+          Link to codebase:
+          {session.currentMatchQuery.userStatus === "helpee" ? (
+            <>
+              {!session.currentMatchQuery.codeLink ? (
+                <>None Provided</>
+              ) : (
+                <>
+                  <a
+                    className="adminText--codelink--linktext"
+                    href={session.currentMatchQuery.codeLink}
+                    target="_blank"
+                  >
+                    <Button
+                      className="adminText--codelink-btn"
+                      variant="contained"
+                      color="primary"
+                    >
+                      View Code
+                    </Button>
+                  </a>
+                </>
+              )}
+            </>
+          ) : (
+            <>{session.matchFound.codeLink}</>
+          )}
+        </Typography>
+      </div>
+    );
+    return <Message adminText={messageToRender} />;
+  };
+
   return (
     <div className="chat-component">
       <NavBar screen={true} user={user} />
       <div className="chat-component--container">
         <div className="chat-component--header">
           <Typography variant="h1">Chat Session</Typography>
-          <Typography variant="h6">Time Elapsed: 0:00s</Typography>
           <Button variant="contained" color="secondary">
             End Session
           </Button>
@@ -161,9 +218,7 @@ function ChatComponent({ user, session }) {
                   overflow: "auto",
                 }}
               >
-                <ListItem>
-                  <Message author="admin" message="test" />
-                </ListItem>
+                <ListItem>{renderAdminText()}</ListItem>
               </List>
             </div>
           </div>
@@ -188,26 +243,3 @@ function ChatComponent({ user, session }) {
 }
 
 export default ChatComponent;
-
-/*
-<h4>{session.currentMatchQuery.userStatus} Information</h4>
-      <p>
-        Match ID: {session.currentMatchQuery._id} <br />
-      User ID: {session.currentMatchQuery.userId} <br />
-      Technology: {session.currentMatchQuery.technology} <br />
-      Language: {session.currentMatchQuery.language} <br />
-      Code Reference: {session.currentMatchQuery.codeReference} <br />
-      Problem Statement: {session.currentMatchQuery.problemStatement} <br />
-      Code Link: {session.currentMatchQuery.codeLink}
-      </p>
-      <h4>{session.matchFound.userStatus} Information</h4>
-      <p>
-        Match ID: {session.matchFound._id} <br />
-      User ID: {session.matchFound.userId} <br />
-      Technology: {session.matchFound.technology} <br />
-      Language: {session.matchFound.language} <br />
-      Code Reference: {session.matchFound.codeReference} <br />
-      Problem Statement: {session.matchFound.problemStatement} <br />
-      Code Link: {session.matchFound.codeLink}
-      </p>
-*/
