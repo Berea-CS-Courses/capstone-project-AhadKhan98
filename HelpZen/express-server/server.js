@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
 require("dotenv").config();
-// const io = require("socket.io")(http, { cors: { origin: "*" } });
 
 // Configure middlewares
 const http = require("http").createServer(app);
 const cors = require("cors"); // Allows Cross-Origin Resource Sharing
+const io = require("socket.io")(http, { cors: { origin: "*" } });
 app.use(express.json());
 app.use(cors());
 
@@ -118,29 +118,24 @@ app.post("/api/addNewMatch", (req, res) => {
  * Takes Match ID from request
  * Deletes match in MongoDB
  */
-app.post("/api/deleteMatchById", (req,res) => {
+app.post("/api/deleteMatchById", (req, res) => {
   const matchId = req.body.matchId;
   matchController.deleteMatchById(matchId).then((result) => {
     res.send(result);
-  })
-})
+  });
+});
 
-
-app.post("/api/findMatchForId", (req,res) => {
+app.post("/api/findMatchForId", (req, res) => {
   const matchId = req.body.matchId;
   matchController.findMatchForId(matchId).then((result) => {
     res.send(result);
-  })
-})
+  });
+});
 
-// TODO: Uncomment when working on sockets implementation
-// io.on("connection", (socket) => {
-//   console.log(`New connection established. ID:${socket.id}`);
-
-//   socket.on("SEND_MESSAGE", (data) => {
-//     io.emit("RECEIVE_MESSAGE", data);
-//   });
-// });
+// Sockets Implementation for Chat Room
+io.on("connection", (socket) => {
+  console.log(`New connection established. ID:${socket.id}`);
+});
 
 // Listens on the port provided by the host machine or 8000.
 http.listen(PORT, () => {

@@ -28,29 +28,27 @@ function FindMatch({ user, matchQuery }) {
   // Adds the matchQuery in state to the db and finds a match using API
   useEffect(() => {
     const addMatchToDbAsync = async () => {
-      const currentMatchObject = await addMatchQueryToDb(matchQuery)
+      const currentMatchObject = await addMatchQueryToDb(matchQuery);
       setCurrentMatchQuery(currentMatchObject.data);
       return currentMatchObject.data;
-    }
+    };
 
     let interval = null;
-    
-      addMatchToDbAsync().then(currentMatchObject => {
-        interval = setInterval(() => {
-          console.log("Trying to find match..");
-        findMatchForId({matchId: currentMatchObject._id}).then(response => {
-          if(response.data) {
+
+    addMatchToDbAsync().then((currentMatchObject) => {
+      interval = setInterval(() => {
+        console.log("Trying to find match..");
+        findMatchForId({ matchId: currentMatchObject._id }).then((response) => {
+          if (response.data) {
             console.log("Found Match");
             clearInterval(interval);
             setMatchFound(response.data);
           }
-          
-        })
-        }, 5000)
-      })
-      return () => clearInterval(interval);
-  }, [])
-  
+        });
+      }, 5000);
+    });
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="findmatch--container">
@@ -66,7 +64,21 @@ function FindMatch({ user, matchQuery }) {
         </>
       ) : (
         <>
-          <Redirect to={{pathname:"/chat", userObject:{user}, session:{currentMatchQuery, matchFound}}}  />
+          <Redirect
+            to={{
+              pathname: `/chat/${
+                currentMatchQuery.userStatus === "helpee"
+                  ? currentMatchQuery.userId
+                  : matchFound.userId
+              }/${
+                currentMatchQuery.userStatus === "helper"
+                  ? currentMatchQuery.userId
+                  : matchFound.userId
+              }`,
+              userObject: { user },
+              session: { currentMatchQuery, matchFound },
+            }}
+          />
         </>
       )}
     </div>
