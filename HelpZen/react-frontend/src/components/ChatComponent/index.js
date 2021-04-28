@@ -18,10 +18,15 @@ import "./styles.css";
 import { getUserById } from "../../api";
 
 function ChatComponent({ user, session }) {
-  const [helpee, setHelpee] = useState(null);
-  const [helper, setHelper] = useState(null);
+  const [helpee, setHelpee] = useState();
+  const [helper, setHelper] = useState();
 
+  // Runs the code inside the useEffect only once when the component mounts
   useEffect(() => {
+    /**
+     * Uses the session object to find the user object for the helper and helpee
+     * Sets the user objects to state
+     */
     const setHelpeeAndHelperToState = () => {
       getUserById(session.currentMatchQuery.userId).then((response) => {
         if (session.currentMatchQuery.userStatus === "helpee") {
@@ -41,6 +46,10 @@ function ChatComponent({ user, session }) {
     setHelpeeAndHelperToState();
   }, []);
 
+  /**
+   * Takes in the technology name stored in the database and converts it to the full form
+   * @param technology String containing the technology name as stored in the database
+   */
   const renderTechnologyAsText = (technology) => {
     switch (technology) {
       case "ai":
@@ -62,6 +71,10 @@ function ChatComponent({ user, session }) {
     }
   };
 
+  /**
+   * Takes in the language stored in the database and converts it to the full form
+   * @param language String containing the language as stored in the database
+   */
   const renderLanguageAsText = (language) => {
     switch (language) {
       case "c":
@@ -91,6 +104,10 @@ function ChatComponent({ user, session }) {
     }
   };
 
+  /**
+   * Renders the default messages that need to be sent to introduce the two users
+   * Message contains data related to the match query
+   */
   const renderAdminText = () => {
     const messageToRender = (
       <div>
