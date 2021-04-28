@@ -134,7 +134,10 @@ app.post("/api/findMatchForId", (req, res) => {
 
 // Sockets Implementation for Chat Room
 io.on("connection", (socket) => {
-  console.log(`New connection established. ID:${socket.id}`);
+  socket.on("joinRoom", (room) => {
+    socket.join(room);
+    console.log("JOOINED ROOM:", room);
+  });
 });
 
 // Listens on the port provided by the host machine or 8000.

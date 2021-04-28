@@ -23,6 +23,7 @@ function ChatView(props) {
 
   useEffect(() => {
     const socket = io("http://localhost:8000");
+    socket.emit("joinRoom", helpeeId + helperId);
   }, []);
 
   /**
