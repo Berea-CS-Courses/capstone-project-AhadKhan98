@@ -2,7 +2,7 @@
  * Renders UI for chat room
  * Restricts access to only users that have been matched
  */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import {
@@ -14,12 +14,35 @@ import {
 } from "@material-ui/core";
 import Message from "./Message";
 import "./styles.css";
-
+import io from "socket.io-client";
 import { getUserById } from "../../api";
 
-function ChatComponent({ user, session }) {
+function ChatComponent({ user, session, roomId }) {
   const [helpee, setHelpee] = useState();
   const [helper, setHelper] = useState();
+  const [socket] = useState(() => io("http://localhost:8000"));
+  const [messages, setMessages] = useState([]);
+  const [currentMessage, setCurrentMessage] = useState("");
+
+  useEffect(() => {
+    socket.emit("joinRoom", roomId);
+    socket.on("receiveMessage", (msg) => {
+      console.log("RECEIVE MESSAGE");
+      setMessages((oldMessages) => [msg, ...oldMessages]);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const sendMessage = (message) => {
+    if (message.message) {
+      socket.emit("sendMessage", message);
+      setMessages((oldMessages) => [message, ...oldMessages]);
+      setCurrentMessage("");
+    }
+  };
 
   // Runs the code inside the useEffect only once when the component mounts
   useEffect(() => {
@@ -102,6 +125,17 @@ function ChatComponent({ user, session }) {
       case "swift":
         return <>Swift</>;
     }
+  };
+
+  const renderMessages = () => {
+    const result = messages.map((msg) => {
+      return (
+        <ListItem>
+          <Message author={msg.author} message={msg.message} />
+        </ListItem>
+      );
+    });
+    return result;
   };
 
   /**
@@ -236,6 +270,7 @@ function ChatComponent({ user, session }) {
                 }}
               >
                 <ListItem>{renderAdminText()}</ListItem>
+                {renderMessages()}
               </List>
             </div>
           </div>
@@ -243,11 +278,29 @@ function ChatComponent({ user, session }) {
             <TextField
               placeholder="Type your response here.."
               variant="outlined"
+              value={currentMessage}
+              onChange={(e) => setCurrentMessage(e.target.value)}
+              onKeyPress={(e) =>
+                e.key === "Enter"
+                  ? sendMessage({
+                      author: user.firstName,
+                      roomId: roomId,
+                      message: currentMessage,
+                    })
+                  : null
+              }
             ></TextField>
             <Button
               className="chat-component--body--textbox--sendButton"
               variant="contained"
               color="primary"
+              onClick={() =>
+                sendMessage({
+                  author: user.firstName,
+                  roomId: roomId,
+                  message: currentMessage,
+                })
+              }
             >
               Send
             </Button>

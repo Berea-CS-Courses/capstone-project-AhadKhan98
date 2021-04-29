@@ -89,7 +89,6 @@ app.post("/api/loginUser", (req, res) => {
 app.post("/api/getUserById", (req, res) => {
   const userId = req.body.userId;
   authController.getUserById(userId).then((result) => {
-    console.log("RES IS", result);
     res.send(result);
   });
 });
@@ -134,9 +133,24 @@ app.post("/api/findMatchForId", (req, res) => {
 
 // Sockets Implementation for Chat Room
 io.on("connection", (socket) => {
+  console.log("Connected to socket", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("Disconnected:  ", socket.id);
+  });
+
   socket.on("joinRoom", (room) => {
     socket.join(room);
-    console.log("JOOINED ROOM:", room);
+    console.log(`Socket with id: ${socket.id} joined room with id: ${room}`);
+  });
+
+  socket.on("sendMessage", (data) => {
+    console.log(
+      `Message received by: ${data.author}, For Room: ${data.roomId}, Message: ${data.message}`
+    );
+    socket
+      .to(data.roomId)
+      .emit("receiveMessage", { author: data.author, message: data.message });
   });
 });
 
