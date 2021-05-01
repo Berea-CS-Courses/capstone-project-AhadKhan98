@@ -1,3 +1,6 @@
+/**
+ * Renders HelperStats component and sends required data to it
+ */
 import React from "react";
 
 import HelperStats from "../components/HelperStats";

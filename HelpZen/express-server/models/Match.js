@@ -1,3 +1,8 @@
+/* 
+Models how the Match object would appear in MongoDB
+*/
+
+
 const mongoose = require("mongoose");
 
 const MatchSchema = mongoose.Schema({
@@ -31,6 +36,11 @@ const MatchSchema = mongoose.Schema({
     unique: false,
     required: false,
   },
+  codeLink: {
+    type: String,
+    unique: false,
+    required: false,
+  }
 });
 
 const Match = mongoose.model("matches", MatchSchema);

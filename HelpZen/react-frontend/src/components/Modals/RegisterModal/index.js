@@ -1,3 +1,7 @@
+/**
+ * Displays modal used to register a new user to the app
+ * Makes request to the API to sign up users using the form data
+ */
 import React, { useState } from "react";
 import { Modal, Button, Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -15,10 +19,12 @@ function RegisterModal({ open, handleToggle, userLoginHandler }) {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Updates formData in state every time a change is made
   const handleFormInputChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  // Verifies that the form is complete and registers a new user using the API
   const handleSignupButtonClick = () => {
     if (
       formData.firstName &&
@@ -29,17 +35,17 @@ function RegisterModal({ open, handleToggle, userLoginHandler }) {
       registerNewUser(formData)
         .then((response) => {
           if (response.data) {
-            userLoginHandler(response.data);
+            userLoginHandler(response.data); // Updates the user in state if a user was created and returned back from the db
           } else {
-            setErrorMessage("A user with that email already exists.");
+            setErrorMessage("A user with that email already exists."); // Displays error indicating an existing user with the same email
           }
         })
         .catch((err) => {
           console.log("Error occurred!");
-          setErrorMessage("An unexpected error occurred.");
+          setErrorMessage("An unexpected error occurred."); // Displays error if database encounters an unexpected error.
         });
     } else {
-      setErrorMessage("Please make sure all fields have been entered.");
+      setErrorMessage("Please make sure all fields have been entered."); // Displays error if required fields left blank.
     }
   };
 

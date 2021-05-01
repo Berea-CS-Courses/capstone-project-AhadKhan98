@@ -1,3 +1,7 @@
+/**
+ * Renders an icon card for each item in data
+ * Enables clicking functionality
+ */
 import React, { useState } from "react";
 
 import "./styles.css";
@@ -8,12 +12,14 @@ import IconCard from "../../../../IconCard";
 import { data } from "./data";
 
 function SelectTechnology({ userStatus, updateScreenAndUpdateState }) {
-  const [techSelections, setTechSelections] = useState([]);
+  const [techSelections, setTechSelections] = useState([]); // Stores all selections in state
 
+  // Used when userStatus="helpee". Updates the screen and stores selection
   const handleCardClick = (value) => {
     updateScreenAndUpdateState({ technology: value });
   };
 
+  // Used when userStatus="helper". Allows multiple selections and stores them in state.
   const handleCardSelect = (value) => {
     if (techSelections.includes(value)) {
       const newTechSelections = [...techSelections];
@@ -25,6 +31,7 @@ function SelectTechnology({ userStatus, updateScreenAndUpdateState }) {
     }
   };
 
+  // Used when userStatus="helper". Updates the screen and updates the matchQuery in state.
   const handleNextButtonClick = () => {
     updateScreenAndUpdateState({ technology: techSelections });
   };
@@ -32,14 +39,15 @@ function SelectTechnology({ userStatus, updateScreenAndUpdateState }) {
   return (
     <div className="selectTechnology--container">
       <h4 className="selectTechnology--title">
-        {userStatus === "helpee" ? (
+        {userStatus === "helpee" ? ( // Renders text based on userStatus
           <>Please select your preferred technology below</>
         ) : (
           <>Please select all technologies that you are proficient in</>
         )}
       </h4>
       <div className="selectTechnology--iconCard">
-        {userStatus === "helpee" ? (
+        {/* Provides a different onClick function to IconCard component based on userStatus */}
+        {userStatus === "helpee" ? ( 
           <>
             {data.map((technology) => (
               <IconCard
@@ -61,6 +69,7 @@ function SelectTechnology({ userStatus, updateScreenAndUpdateState }) {
           </>
         )}
       </div>
+      {/* Displays the next button only when multiple selections are allowed */}
       {userStatus === "helper" ? (
         <Button
           onClick={handleNextButtonClick}

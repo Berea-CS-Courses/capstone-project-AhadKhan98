@@ -1,22 +1,23 @@
+/**
+ * Calls the API to find a match
+ * Displays loading screen until a match has been found
+ * Displays error if no match found
+ */
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 import { LinearProgress } from "@material-ui/core";
 
-import { addMatchQueryToDb } from "../../../../../api/";
+import { addMatchQueryToDb, findMatchForId } from "../../../../../api/";
 
 import "./styles.css";
 
-function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
+function FindMatch({ user, matchQuery }) {
   const [secondsElapsed, setSecondsElapsed] = useState(0);
+  const [currentMatchQuery, setCurrentMatchQuery] = useState(false);
   const [matchFound, setMatchFound] = useState(false);
 
-  // const findMatch = () => {
-  //   setTimeout(() => {
-  //     setMatchFound(true);
-  //   }, 10000);
-  // };
-
+  // Updates the secondsElapsed in state every second
   useEffect(() => {
     const interval = setInterval(() => {
       setSecondsElapsed((secondsElapsed) => secondsElapsed + 1);
@@ -24,12 +25,32 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
     return () => clearInterval(interval);
   }, []);
 
+  // Adds the matchQuery in state to the db and finds a match using API
   useEffect(() => {
-    addMatchQueryToDb(matchQuery).then((res) => {
-      console.log("RESULT", res);
-    });
-    // findMatch();
-  }, []);
+    const addMatchToDbAsync = async () => {
+      const currentMatchObject = await addMatchQueryToDb(matchQuery)
+      setCurrentMatchQuery(currentMatchObject.data);
+      return currentMatchObject.data;
+    }
+
+    let interval = null;
+    
+      addMatchToDbAsync().then(currentMatchObject => {
+        interval = setInterval(() => {
+          console.log("Trying to find match..");
+        findMatchForId({matchId: currentMatchObject._id}).then(response => {
+          if(response.data) {
+            console.log("Found Match");
+            clearInterval(interval);
+            setMatchFound(response.data);
+          }
+          
+        })
+        }, 5000)
+      })
+      return () => clearInterval(interval);
+  }, [])
+  
 
   return (
     <div className="findmatch--container">
@@ -45,7 +66,7 @@ function FindMatch({ updateScreenAndUpdateState, matchQuery }) {
         </>
       ) : (
         <>
-          <Redirect to="/chat" />
+          <Redirect to={{pathname:"/chat", user, session:{currentMatchQuery, matchFound}}}  />
         </>
       )}
     </div>

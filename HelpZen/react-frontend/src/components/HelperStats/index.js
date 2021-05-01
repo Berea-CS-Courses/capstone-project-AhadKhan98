@@ -1,5 +1,7 @@
+/**
+ * Takes the user data and displays their stats as a helper
+ */
 import React from "react";
-
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import SessionCard from "./SessionCard";
@@ -9,9 +11,10 @@ import "./styles.css";
 
 function HelperStats({ user, userLogoutHandler }) {
   if (!user) {
-    window.location.replace("/");
+    window.location.replace("/"); // Redirect to homepage if user is not logged in
   }
 
+  // Renders stars dynamically by calculating the average rating
   const renderStars = () => {
     let rating = 0;
     for (let i = 0; i < user.prevSessions.length; i++) {
@@ -27,6 +30,7 @@ function HelperStats({ user, userLogoutHandler }) {
     return stars;
   };
 
+  // Displays cards summarizing each session in the past
   const renderSessionCards = () => {
     const reversedPrevSessions = user.prevSessions.reverse();
     let counter = reversedPrevSessions.length + 1;
@@ -59,9 +63,6 @@ function HelperStats({ user, userLogoutHandler }) {
           <h2>
             Helper Rating:
             {renderStars()}
-            {/* <StarIcon className="helperStats--star--icon" />
-            <StarIcon className="helperStats--star--icon" />
-            <StarIcon className="helperStats--star--icon" /> */}
           </h2>
           <h2>Times Helped: {user.prevSessions.length}</h2>
           <h2>History</h2>

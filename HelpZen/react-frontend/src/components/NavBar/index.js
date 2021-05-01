@@ -1,3 +1,7 @@
+/**
+ * Renders the top navigation bar
+ * Uses data passed to it to dynamically render certain objects
+ */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -24,17 +28,21 @@ function NavBar({
   screen,
   userLogoutHandler,
 }) {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null); // Sets anchor element for which drop down menu should be anchored to
 
+  // Sets the anchor element to be user menu button
   const handleUserMenuButtonClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
 
+  // Removes the anchor element
   const handleUserMenuClose = () => {
     setAnchorEl(null);
   };
 
+  // Checks the user object and display the items on the right of the navbar accordingly
   const renderRightItems = () => {
+    // If user is not logged in, renders Links to login/register and additional pages on the homescreen
     if (!user) {
       return (
         <>
@@ -63,10 +71,11 @@ function NavBar({
         </>
       );
     } else {
+      // If user is logged in, renders the user's name, along with toggle button to allow switching between 'helper' and 'helpee' mode.
       return (
         <>
-          {screen ? (
-            <>null</>
+          {screen ? ( // Does not render toggle button if not on the home screen
+            null
           ) : (
             <>
               <div className="navBar--appBar--rightItems--userStatus">

@@ -1,3 +1,7 @@
+/**
+ * Data for all technologies to be rendered by SelectTechnology Component
+ */
+
 import aiImg from "../../../../../assets/images/technologies/ai.png";
 import mobileImg from "../../../../../assets/images/technologies/mobile.png";
 import webdevImg from "../../../../../assets/images/technologies/webdev.png";

@@ -1,3 +1,6 @@
+/**
+ * Displays UI for users that are logged in to the app
+ */
 import React, { useState } from "react";
 
 import NavBar from "../../NavBar";
@@ -10,6 +13,7 @@ import "./styles.css";
 function LoggedIn({ user, userLogoutHandler }) {
   const [userStatus, setUserStatus] = useState("helpee");
 
+  // Changes userStatus in state every time the toggle button is changed
   const handleUserStatusToggle = () => {
     if (userStatus === "helpee") {
       setUserStatus("helper");

@@ -1,3 +1,7 @@
+/**
+ * Data for all languages to be rendered by SelectLanguage Component
+ */
+
 import cImg from "../../../../../assets/images/languages/c.png";
 import cppImg from "../../../../../assets/images/languages/cpp.png";
 import csharpImg from "../../../../../assets/images/languages/csharp.png";

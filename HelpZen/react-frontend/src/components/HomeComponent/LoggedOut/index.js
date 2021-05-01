@@ -1,3 +1,6 @@
+/**
+ * Displays a UI for users that are not logged in to the app
+ */
 import React, { useState } from "react";
 
 import "./styles.css";
@@ -16,10 +19,12 @@ function LoggedOut({ user, userLoginHandler }) {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
 
+  // Toggles display of Login Modal
   const handleLoginModalToggle = () => {
     setLoginModalOpen(!loginModalOpen);
   };
 
+  // Toggles display of Register Modal
   const handleRegisterModalToggle = () => {
     setRegisterModalOpen(!registerModalOpen);
   };

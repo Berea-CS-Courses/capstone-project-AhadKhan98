@@ -1,3 +1,9 @@
+/**
+ * Component responsible for core functionality of the App
+ * Handles dynamic displaying of all other components
+ * Routes paths to appropriate components
+ */
+
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -8,8 +14,9 @@ import HelperStatsView from "./views/HelperStatsView";
 import { getUserById } from "./api";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null); // Initialize user to be null on app start
 
+  // Checks if userid exists in localStorage and logs user in automatically. Runs once when component loads.
   useEffect(() => {
     if (window.localStorage.getItem("userid")) {
       const userId = window.localStorage.getItem("userid");
@@ -23,11 +30,13 @@ function App() {
     }
   }, []);
 
+  // Stores the userid in localstorage to auto login later
   const userLoginHandler = (authUser) => {
     window.localStorage.setItem("userid", authUser._id);
     setUser(authUser);
   };
 
+  // Removes userid from localstorage to prevent auto login
   const userLogoutHandler = () => {
     window.localStorage.removeItem("userid");
     setUser(null);
@@ -43,9 +52,7 @@ function App() {
             userLogoutHandler={userLogoutHandler}
           />
         </Route>
-        <Route path="/chat">
-          <ChatView />
-        </Route>
+        <Route path="/chat" render={(props) => <ChatView {...props} />}/>
         <Route path="/helper-stats">
           <HelperStatsView user={user} userLogoutHandler={userLogoutHandler} />
         </Route>
