@@ -25,7 +25,7 @@ function ChatComponent({ user, session, roomId }) {
   const [currentMessage, setCurrentMessage] = useState("");
 
   useEffect(() => {
-    socket.emit("joinRoom", roomId);
+    socket.emit("joinRoom", roomId, session);
     socket.on("receiveMessage", (msg) => {
       console.log("RECEIVE MESSAGE");
       setMessages((oldMessages) => [msg, ...oldMessages]);

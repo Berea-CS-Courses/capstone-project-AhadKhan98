@@ -133,19 +133,33 @@ app.post("/api/findMatchForId", (req, res) => {
 
 // Sockets Implementation for Chat Room
 let numClients = {}; // Stores and updates online users in rooms
+
 io.on("connection", (socket) => {
   socket.on("disconnectUser", (room) => {
     numClients[room] -= 1;
-    console.log(`${numClients[room]} NUM OF CLIENTS IN ROOM`);
+
+    // Delete the room from the global count if no users connected
+    if (numClients[room] === 0) {
+      delete numClients[room];
+    }
   });
 
-  socket.on("joinRoom", (room) => {
+  socket.on("joinRoom", (room, session) => {
+    matchQueryOneId = session.currentMatchQuery._id;
+    matchQueryTwoId = session.matchFound._id;
+
     socket.join(room);
     numClients[room] ? (numClients[room] += 1) : (numClients[room] = 1); // Updates online user count
+
+    // Delete match from MongoDB if both users have connected
     if (numClients[room] >= 2) {
-      // Delete match object from db
+      matchController
+        .deleteMatchById(matchQueryOneId)
+        .then((res) => console.log("Delete Status: ", res));
+      matchController
+        .deleteMatchById(matchQueryTwoId)
+        .then((res) => console.log("Delete Status: ", res));
     }
-    console.log(`${numClients[room]} NUM OF CLIENTS IN ROOM`);
   });
 
   socket.on("sendMessage", (data) => {
