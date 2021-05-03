@@ -2,9 +2,7 @@
  * Gets necessary data to render ChatComponent
  * Renders ChatComponent and sends required data
  */
-import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
-import { deleteMatchById } from "../api";
+import React from "react";
 
 import ChatComponent from "../components/ChatComponent";
 
@@ -18,21 +16,6 @@ function ChatView(props) {
   if (!session || !user) {
     window.location.replace("/");
   }
-
-  /**
-   * Deletes both of the match objects from MongoDB
-   */
-  // const deleteMatchesFromDb = () => {
-  //   const matchObject1 = session.currentMatchQuery;
-  //   const matchObject2 = session.matchFound;
-
-  //   deleteMatchById({matchId: matchObject1._id}) // Calls API to delete the match object and waits for a response
-  //   .then((res) => console.log("MatchObject1 Deletion Status: ", res.data));
-
-  //   deleteMatchById({matchId: matchObject2._id}) // Calls API to delete the match object and waits for a response
-  //   .then((res) => console.log("MatchObject1 Deletion Status: ", res.data));
-  // }
-  // deleteMatchesFromDb();
 
   return (
     <div>
