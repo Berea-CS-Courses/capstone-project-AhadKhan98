@@ -132,22 +132,23 @@ app.post("/api/findMatchForId", (req, res) => {
 });
 
 // Sockets Implementation for Chat Room
+let numClients = {}; // Stores and updates online users in rooms
 io.on("connection", (socket) => {
-  console.log("Connected to socket", socket.id);
-
-  socket.on("disconnect", () => {
-    console.log("Disconnected:  ", socket.id);
+  socket.on("disconnectUser", (room) => {
+    numClients[room] -= 1;
+    console.log(`${numClients[room]} NUM OF CLIENTS IN ROOM`);
   });
 
   socket.on("joinRoom", (room) => {
     socket.join(room);
-    console.log(`Socket with id: ${socket.id} joined room with id: ${room}`);
+    numClients[room] ? (numClients[room] += 1) : (numClients[room] = 1); // Updates online user count
+    if (numClients[room] >= 2) {
+      // Delete match object from db
+    }
+    console.log(`${numClients[room]} NUM OF CLIENTS IN ROOM`);
   });
 
   socket.on("sendMessage", (data) => {
-    console.log(
-      `Message received by: ${data.author}, For Room: ${data.roomId}, Message: ${data.message}`
-    );
     socket
       .to(data.roomId)
       .emit("receiveMessage", { author: data.author, message: data.message });

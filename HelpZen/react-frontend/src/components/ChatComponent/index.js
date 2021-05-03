@@ -32,6 +32,7 @@ function ChatComponent({ user, session, roomId }) {
     });
 
     return () => {
+      socket.emit("disconnectUser", roomId);
       socket.disconnect();
     };
   }, []);
