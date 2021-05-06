@@ -2,7 +2,7 @@
  * Renders UI for chat room
  * Restricts access to only users that have been matched
  */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../Footer";
 import NavBar from "../NavBar";
 import {
@@ -26,9 +26,15 @@ function ChatComponent({ user, session, roomId }) {
 
   useEffect(() => {
     socket.emit("joinRoom", roomId, session);
+
     socket.on("receiveMessage", (msg) => {
       console.log("RECEIVE MESSAGE");
       setMessages((oldMessages) => [msg, ...oldMessages]);
+    });
+
+    socket.on("endChatSessionConfirm", (data) => {
+      // Delete helpers active session
+      // Change helpers active session status to pending (indicating they need to leave a review)
     });
 
     return () => {
@@ -69,6 +75,10 @@ function ChatComponent({ user, session, roomId }) {
     };
     setHelpeeAndHelperToState();
   }, []);
+
+  const endChatSession = () => {
+    socket.emit("endChatSession", roomId, helpee._id, helper._id);
+  };
 
   /**
    * Takes in the technology name stored in the database and converts it to the full form
@@ -207,7 +217,11 @@ function ChatComponent({ user, session, roomId }) {
       <div className="chat-component--container">
         <div className="chat-component--header">
           <Typography variant="h1">Chat Session</Typography>
-          <Button variant="contained" color="secondary">
+          <Button
+            onClick={endChatSession}
+            variant="contained"
+            color="secondary"
+          >
             End Session
           </Button>
         </div>

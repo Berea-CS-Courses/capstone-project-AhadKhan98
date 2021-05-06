@@ -69,3 +69,33 @@ exports.addSessionToUser = async (sessionObject, userId) => {
     return false;
   }
 };
+
+exports.modifySessionForUser = async (userId, modifiedSessionStatus) => {
+  if (userId) {
+    if (modifiedSessionStatus) {
+      const result = await User.findByIdAndUpdate(userId, {
+        "activeSession.status": modifiedSessionStatus,
+      })
+        .then((res) => {
+          return res;
+        })
+        .catch((err) => {
+          return false;
+        });
+      return result;
+    } else {
+      const result = await User.findByIdAndUpdate(userId, {
+        activeSession: null,
+      })
+        .then((res) => {
+          return res;
+        })
+        .catch((err) => {
+          return false;
+        });
+      return result;
+    }
+  } else {
+    return false;
+  }
+};

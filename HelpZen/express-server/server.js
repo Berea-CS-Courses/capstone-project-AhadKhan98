@@ -148,6 +148,16 @@ app.post("/api/addSessionToUser", (req, res) => {
   });
 });
 
+app.post("/api/modifySessionForUser", (req, res) => {
+  const userId = req.body.userId;
+  const updatedSessionStatus = req.body.updatedSessionStatus;
+  sessionController
+    .modifySessionForUser(userId, updatedSessionStatus)
+    .then((result) => {
+      res.send(result);
+    });
+});
+
 // Sockets Implementation for Chat Room
 let numClients = {}; // Stores and updates online users in rooms
 
@@ -175,9 +185,13 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("endChatSession", (roomId, helpeeId, helperId) => {
+    io.to(roomId).emit("endChatSessionConfirm", { roomId, helpeeId, helperId });
+  });
+
   socket.on("sendMessage", (data) => {
     socket
-      .to(data.roomId)
+      .to(roomId)
       .emit("receiveMessage", { author: data.author, message: data.message });
   });
 });
