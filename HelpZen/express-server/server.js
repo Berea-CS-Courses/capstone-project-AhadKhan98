@@ -13,6 +13,7 @@ app.use(cors());
 // Import Controllers
 const authController = require("./controllers/authController");
 const matchController = require("./controllers/matchController");
+const sessionController = require("./controllers/sessionController");
 
 // Initialize connection to the database
 const mongoose = require("mongoose");
@@ -131,6 +132,13 @@ app.post("/api/findMatchForId", (req, res) => {
   });
 });
 
+app.post("/api/createNewSession", (req, res) => {
+  const sessionData = req.body.sessionData;
+  sessionController.createNewSession(sessionData).then((result) => {
+    res.send(result);
+  });
+});
+
 // Sockets Implementation for Chat Room
 let numClients = {}; // Stores and updates online users in rooms
 
@@ -138,7 +146,7 @@ io.on("connection", (socket) => {
   socket.on("disconnectUser", (room) => {
     numClients[room] -= 1;
 
-    // Delete the room from the global count if no users connected
+    // Delete the room from the global count object if no users connected
     if (numClients[room] === 0) {
       delete numClients[room];
     }
