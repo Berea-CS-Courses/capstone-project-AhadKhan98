@@ -191,7 +191,7 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (data) => {
     socket
-      .to(roomId)
+      .to(data.roomId)
       .emit("receiveMessage", { author: data.author, message: data.message });
   });
 });

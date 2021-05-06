@@ -121,3 +121,14 @@ export const addSessionToUser = (sessionObject, userId) => {
       return err;
     });
 };
+
+export const modifySessionForUser = (userId, updatedSessionStatus) => {
+  return axios
+    .post(API_URL + "/modifySessionForUser", { userId, updatedSessionStatus })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

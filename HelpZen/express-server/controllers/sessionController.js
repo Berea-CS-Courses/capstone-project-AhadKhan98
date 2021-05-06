@@ -70,7 +70,7 @@ exports.addSessionToUser = async (sessionObject, userId) => {
   }
 };
 
-exports.modifySessionForUser = async (userId, modifiedSessionStatus) => {
+exports.modifySessionForUser = async ({ userId, modifiedSessionStatus }) => {
   if (userId) {
     if (modifiedSessionStatus) {
       const result = await User.findByIdAndUpdate(userId, {

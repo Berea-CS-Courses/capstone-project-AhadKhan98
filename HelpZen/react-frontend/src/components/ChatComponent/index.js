@@ -15,7 +15,7 @@ import {
 import Message from "./Message";
 import "./styles.css";
 import io from "socket.io-client";
-import { getUserById } from "../../api";
+import { getUserById, modifySessionForUser } from "../../api";
 
 function ChatComponent({ user, session, roomId }) {
   const [helpee, setHelpee] = useState();
@@ -32,9 +32,23 @@ function ChatComponent({ user, session, roomId }) {
       setMessages((oldMessages) => [msg, ...oldMessages]);
     });
 
-    socket.on("endChatSessionConfirm", (data) => {
+    socket.on("endChatSessionConfirm", ({ helperId, helpeeId }) => {
       // Delete helpers active session
+      modifySessionForUser({
+        userId: helperId,
+        modifiedSessionStatus: null,
+      }).then((res) => {
+        console.log(res);
+      });
       // Change helpers active session status to pending (indicating they need to leave a review)
+      modifySessionForUser({
+        userId: helpeeId,
+        modifiedSessionStatus: "pending",
+      }).then((res) => {
+        console.log(res);
+      });
+      // Redirect the users to the homepage
+      window.location.replace("/");
     });
 
     return () => {
