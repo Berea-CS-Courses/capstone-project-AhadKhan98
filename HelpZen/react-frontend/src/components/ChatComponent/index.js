@@ -32,6 +32,26 @@ function ChatComponent({ user, session, roomId }) {
       setMessages((oldMessages) => [msg, ...oldMessages]);
     });
 
+    socket.on("joinedRoom", () => {
+      setMessages((oldMessages) => [
+        {
+          author: "Admin",
+          message: `The user has joined the chat.`,
+        },
+        ...oldMessages,
+      ]);
+    });
+
+    socket.on("displayMessage", () => {
+      setMessages((oldMessages) => [
+        {
+          author: "Admin",
+          message: `The user has disconnected. Please wait for them to reconnect.`,
+        },
+        ...oldMessages,
+      ]);
+    });
+
     socket.on("endChatSessionConfirm", ({ helperId, helpeeId }) => {
       // Delete helpers active session
       modifySessionForUser({
@@ -52,7 +72,6 @@ function ChatComponent({ user, session, roomId }) {
     });
 
     return () => {
-      socket.emit("disconnectUser", roomId);
       socket.disconnect();
     };
   }, []);
@@ -250,13 +269,13 @@ function ChatComponent({ user, session, roomId }) {
                   className="chat-component--body--left--members--bodytext"
                   variant="body1"
                 >
-                  Helper: {helper?.firstName}
+                  Helper: {helper?.firstName}{" "}
                 </Typography>
                 <Typography
                   className="chat-component--body--left--members--bodytext"
                   variant="body1"
                 >
-                  Helpee: {helpee?.firstName}
+                  Helpee: {helpee?.firstName}{" "}
                 </Typography>
               </div>
               <div className="chat-component--body--left--technologies">

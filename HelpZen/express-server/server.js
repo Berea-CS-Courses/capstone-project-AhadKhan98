@@ -162,19 +162,22 @@ app.post("/api/modifySessionForUser", (req, res) => {
 let numClients = {}; // Stores and updates online users in rooms
 
 io.on("connection", (socket) => {
-  socket.on("disconnectUser", (room) => {
-    numClients[room] -= 1;
+  let globalRoom = null;
+  socket.on("disconnect", () => {
+    numClients[globalRoom] -= 1;
 
     // Delete the room from the global count object if no users connected
-    if (numClients[room] === 0) {
-      delete numClients[room];
+    if (numClients[globalRoom] === 0) {
+      delete numClients[globalRoom];
     }
+    console.log("User disconnected emit to room", globalRoom);
+    socket.to(globalRoom).emit("displayMessage");
   });
 
   socket.on("joinRoom", (room, session) => {
     matchQueryOneId = session.currentMatchQuery._id;
     matchQueryTwoId = session.matchFound._id;
-
+    globalRoom = room;
     socket.join(room);
     numClients[room] ? (numClients[room] += 1) : (numClients[room] = 1); // Updates online user count
 
@@ -183,6 +186,8 @@ io.on("connection", (socket) => {
       matchController.deleteMatchById(matchQueryOneId);
       matchController.deleteMatchById(matchQueryTwoId);
     }
+
+    socket.to(room).emit("joinedRoom");
   });
 
   socket.on("endChatSession", (roomId, helpeeId, helperId) => {
