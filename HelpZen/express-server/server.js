@@ -22,6 +22,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("Established connection to MongoDB"))
   .catch((err) => console.log("Failed to connect to Mongo DB. Error: ", err));
@@ -135,6 +136,14 @@ app.post("/api/findMatchForId", (req, res) => {
 app.post("/api/createNewSession", (req, res) => {
   const sessionData = req.body.sessionData;
   sessionController.createNewSession(sessionData).then((result) => {
+    res.send(result);
+  });
+});
+
+app.post("/api/addSessionToUser", (req, res) => {
+  const userId = req.body.userId;
+  const sessionObject = req.body.sessionObject;
+  sessionController.addSessionToUser(sessionObject, userId).then((result) => {
     res.send(result);
   });
 });

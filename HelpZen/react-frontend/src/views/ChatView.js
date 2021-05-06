@@ -6,13 +6,18 @@ import React from "react";
 
 import ChatComponent from "../components/ChatComponent";
 
-import { createNewSession } from "../api";
+import { createNewSession, addSessionToUser } from "../api";
 
 function ChatView(props) {
   const session = props.location.session; // Gets session object form data being passed via props
   const user = props.location.userObject?.user; // Gets user object from data being passed via props
 
   const roomId = props.match.params.helpeeId + props.match.params.helperId;
+
+  // Redirects to homepage if no session object or no user object was given through props
+  if (!session || !user) {
+    window.location.replace("/");
+  }
 
   /**
    * Takes the session object passed via props
@@ -22,15 +27,13 @@ function ChatView(props) {
   const createSessionAndAddToUser = () => {
     const sessionData = { ...session, roomNumber: roomId };
     createNewSession({ sessionData: sessionData }).then((res) => {
-      console.log("Created new session", res);
+      const sessionObjectFromDB = res.data;
+      addSessionToUser(sessionObjectFromDB, user._id).then((res) => {
+        console.log("SESSION ADD STATUS:", res);
+      });
     });
   };
   createSessionAndAddToUser();
-
-  // Redirects to homepage if no session object or no user object was given through props
-  if (!session || !user) {
-    window.location.replace("/");
-  }
 
   return (
     <div>

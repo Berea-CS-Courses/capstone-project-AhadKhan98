@@ -2,6 +2,7 @@
 Handles all functions related to sessions.
 */
 const Session = require("../models/Session");
+const User = require("../models/User");
 
 /**
  * Takes in sessionData and creates a new session
@@ -44,6 +45,27 @@ exports.createNewSession = async (sessionData) => {
     }
   } else {
     // Return false if incorrect data was provided
+    return false;
+  }
+};
+
+/**
+ * Takes the User Id and the Session Object
+ * Attaches the session object to the corresponding user object
+ */
+exports.addSessionToUser = async (sessionObject, userId) => {
+  if (sessionObject && userId) {
+    const result = await User.findByIdAndUpdate(userId, {
+      activeSession: sessionObject,
+    })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return false;
+      });
+    return result;
+  } else {
     return false;
   }
 };

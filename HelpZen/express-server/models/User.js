@@ -27,6 +27,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  activeSession: {
+    type: Object,
+    required: false,
+    default: null,
+  },
   prevSessions: {
     type: Array,
     default: [],

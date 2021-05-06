@@ -110,3 +110,14 @@ export const createNewSession = (sessionData) => {
       return err;
     });
 };
+
+export const addSessionToUser = (sessionObject, userId) => {
+  return axios
+    .post(API_URL + "/addSessionToUser", { sessionObject, userId })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
