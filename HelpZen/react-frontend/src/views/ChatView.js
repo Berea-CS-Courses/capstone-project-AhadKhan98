@@ -25,7 +25,10 @@ function ChatView(props) {
    * Attaches the newly created session to user's activeSession field in the DB
    */
   const createSessionAndAddToUser = () => {
-    const sessionData = { ...session, roomNumber: roomId };
+    const sessionData = {
+      ...session,
+      roomNumber: `${props.match.params.helpeeId}/${props.match.params.helperId}`,
+    };
     createNewSession({ sessionData: sessionData }).then((res) => {
       const sessionObjectFromDB = res.data;
       addSessionToUser(sessionObjectFromDB, user._id).then((res) => {

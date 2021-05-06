@@ -170,12 +170,8 @@ io.on("connection", (socket) => {
 
     // Delete match from MongoDB if both users have connected
     if (numClients[room] >= 2) {
-      matchController
-        .deleteMatchById(matchQueryOneId)
-        .then((res) => console.log("Delete Status: ", res));
-      matchController
-        .deleteMatchById(matchQueryTwoId)
-        .then((res) => console.log("Delete Status: ", res));
+      matchController.deleteMatchById(matchQueryOneId);
+      matchController.deleteMatchById(matchQueryTwoId);
     }
   });
 
