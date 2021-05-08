@@ -1,8 +1,8 @@
-# Week # 2: Reflection
+# Week # 3: Reflection
 
 ## Accomplishments:
 
-1. Created a basic matching algorithm to identify and match users. 
+1. Created a basic matching algorithm to identify and match users.
 2. Deleted objects from the 'match' table when a match is found.
 3. Created a simple UI for the Chat Room component.
 4. Added code base URL option on helpee screen, when submitting problem statement.
@@ -10,7 +10,7 @@
 
 ## Challenges
 
-1. It was difficult to create an matching algorithm that keeps running in the background until it finds a match. 
+1. It was difficult to create an matching algorithm that keeps running in the background until it finds a match.
 2. Went through plenty of bugs and errors when it comes to using intervals in javascript and the useEffect hook in React.
 
 ## Goals for Next Week
