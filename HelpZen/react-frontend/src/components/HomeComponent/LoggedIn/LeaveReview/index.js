@@ -21,6 +21,10 @@ function LeaveReview({ user }) {
       ? user.activeSession.matchFound
       : user.activeSession.currentMatchQuery;
 
+  const submitRating = () => {
+    alert(`Submitted Rating ${rating}`);
+  };
+
   return (
     <div className="leaveReview--container">
       <NavBar user={user} screen={true} />
@@ -42,6 +46,7 @@ function LeaveReview({ user }) {
             className="leaveReview--button"
             variant="contained"
             color="primary"
+            onClick={submitRating}
           >
             Submit
           </Button>
