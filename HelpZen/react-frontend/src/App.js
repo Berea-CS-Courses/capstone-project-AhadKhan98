@@ -52,7 +52,10 @@ function App() {
             userLogoutHandler={userLogoutHandler}
           />
         </Route>
-        <Route path="/chat" render={(props) => <ChatView {...props} />}/>
+        <Route
+          path="/chat/:helpeeId/:helperId"
+          render={(props) => <ChatView {...props} />}
+        />
         <Route path="/helper-stats">
           <HelperStatsView user={user} userLogoutHandler={userLogoutHandler} />
         </Route>
