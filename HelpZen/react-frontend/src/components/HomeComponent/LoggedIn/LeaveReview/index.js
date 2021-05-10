@@ -6,6 +6,11 @@ import Footer from "../../../Footer";
 import { Button } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 
+import {
+  updatePrevSessionsForUserId,
+  modifySessionForUser,
+} from "../../../../api";
+
 import "./styles.css";
 
 function LeaveReview({ user }) {
@@ -21,8 +26,24 @@ function LeaveReview({ user }) {
       ? user.activeSession.matchFound
       : user.activeSession.currentMatchQuery;
 
-  const submitRating = () => {
-    alert(`Submitted Rating ${rating}`);
+  const submitRating = (helpeeId, helperId, data) => {
+    updatePrevSessionsForUserId(helperId, data).then(() => {
+      modifySessionForUser({
+        userId: helpeeId,
+        modifiedSessionStatus: null,
+      }).then(() => {
+        window.location.replace("/");
+      });
+    });
+  };
+
+  const getDate = () => {
+    let today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + "/" + dd + "/" + yyyy;
+    return today;
   };
 
   return (
@@ -46,7 +67,13 @@ function LeaveReview({ user }) {
             className="leaveReview--button"
             variant="contained"
             color="primary"
-            onClick={submitRating}
+            onClick={() =>
+              submitRating(userSession.userId, userToReviewSession.userId, {
+                date: getDate(),
+                problemStatement: userSession.problemStatement,
+                rating: rating,
+              })
+            }
           >
             Submit
           </Button>

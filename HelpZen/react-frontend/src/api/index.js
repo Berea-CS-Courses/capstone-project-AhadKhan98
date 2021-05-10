@@ -132,3 +132,14 @@ export const modifySessionForUser = (userId, updatedSessionStatus) => {
       return err;
     });
 };
+
+export const updatePrevSessionsForUserId = (userId, data) => {
+  return axios
+    .post(API_URL + "/updatePrevSessionsForUserId", { userId, data })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
