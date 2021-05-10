@@ -48,20 +48,6 @@ app.post("/api/registerNewUser", (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
-    prevSessions: [
-      {
-        duration: 100,
-        problemStatement: "Testing a problem statement from API",
-        date: "10/10/10",
-        rating: 4,
-      },
-      {
-        duration: 200,
-        problemStatement: "Testing a problem statement from API # 2",
-        date: "10/10/12",
-        rating: 5,
-      },
-    ],
   };
   authController.registerNewUser(userData).then((result) => {
     res.send(result);
@@ -91,6 +77,14 @@ app.post("/api/loginUser", (req, res) => {
 app.post("/api/getUserById", (req, res) => {
   const userId = req.body.userId;
   authController.getUserById(userId).then((result) => {
+    res.send(result);
+  });
+});
+
+app.post("/api/updatePrevSessionsForUserId", (req, res) => {
+  const userId = req.body.userId;
+  const data = req.body.data;
+  authController.updatePrevSessionsForUserId(userId, data).then((result) => {
     res.send(result);
   });
 });

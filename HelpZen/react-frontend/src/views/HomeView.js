@@ -8,7 +8,6 @@ import { Redirect } from "react-router-dom";
 import LoggedIn from "../components/HomeComponent/LoggedIn";
 import LoggedOut from "../components/HomeComponent/LoggedOut";
 import LeaveReview from "../components/HomeComponent/LoggedIn/LeaveReview";
-import { modifySessionForUser } from "../api";
 
 function HomeView({ user, userLoginHandler, userLogoutHandler }) {
   let componentToRender = null;
@@ -29,7 +28,6 @@ function HomeView({ user, userLoginHandler, userLogoutHandler }) {
     } else if (user.activeSession?.status === "pending") {
       componentToRender = <LeaveReview user={user} />;
     } else {
-      console.log("USER DOES NOT HAVE AN ACTIVE SESSION");
       componentToRender = (
         <LoggedIn user={user} userLogoutHandler={userLogoutHandler} />
       );

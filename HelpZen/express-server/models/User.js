@@ -35,6 +35,7 @@ const UserSchema = new mongoose.Schema({
   prevSessions: {
     type: Array,
     default: [],
+    required: false,
   },
 });
 
