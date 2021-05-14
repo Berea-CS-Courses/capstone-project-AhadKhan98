@@ -9,6 +9,7 @@ import { Rating } from "@material-ui/lab";
 import {
   updatePrevSessionsForUserId,
   modifySessionForUser,
+  deleteSession,
 } from "../../../../api";
 
 import "./styles.css";
@@ -32,7 +33,9 @@ function LeaveReview({ user }) {
         userId: helpeeId,
         modifiedSessionStatus: null,
       }).then(() => {
-        window.location.replace("/");
+        deleteSession({ roomId: user.activeSession.roomNumber }).then(() => {
+          window.location.replace("/");
+        });
       });
     });
   };

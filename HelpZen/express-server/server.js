@@ -134,6 +134,13 @@ app.post("/api/createNewSession", (req, res) => {
   });
 });
 
+app.post("/api/deleteSession", (req, res) => {
+  const roomId = req.body.roomId;
+  sessionController.deleteSessionUsingRoomId(roomId).then((result) => {
+    res.send(result);
+  });
+});
+
 app.post("/api/addSessionToUser", (req, res) => {
   const userId = req.body.userId;
   const sessionObject = req.body.sessionObject;

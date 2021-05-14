@@ -143,3 +143,14 @@ export const updatePrevSessionsForUserId = (userId, data) => {
       return err;
     });
 };
+
+export const deleteSession = (roomId) => {
+  return axios
+    .post(API_URL + "/deleteSession", roomId)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

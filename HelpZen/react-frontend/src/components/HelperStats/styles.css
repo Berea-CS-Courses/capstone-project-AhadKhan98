@@ -1,5 +1,5 @@
-.helperStats--container--stats-screen--container {
-  /* height: 95vh !important; */
+.helperStats--container {
+  height: 75vh !important;
 }
 
 .helperStats--container--stats-screen {

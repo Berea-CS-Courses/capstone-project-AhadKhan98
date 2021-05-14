@@ -70,6 +70,21 @@ exports.addSessionToUser = async (sessionObject, userId) => {
   }
 };
 
+exports.deleteSessionUsingRoomId = async (roomId) => {
+  if (roomId) {
+    const result = await Session.findOneAndDelete({ roomNumber: roomId })
+      .then((res) => {
+        return true;
+      })
+      .catch((err) => {
+        return false;
+      });
+    return result;
+  } else {
+    return false;
+  }
+};
+
 exports.modifySessionForUser = async ({ userId, modifiedSessionStatus }) => {
   if (userId) {
     if (modifiedSessionStatus) {
