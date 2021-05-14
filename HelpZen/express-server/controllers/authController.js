@@ -75,6 +75,21 @@ exports.getUserById = async (userId) => {
   }
 };
 
+exports.updateUserProfile = async (userId, data) => {
+  if (data && userId) {
+    const result = await User.findByIdAndUpdate(userId, { ...data })
+      .then((res) => {
+        return res;
+      })
+      .catch((err) => {
+        return false;
+      });
+    return result;
+  } else {
+    return false;
+  }
+};
+
 exports.updatePrevSessionsForUserId = async (userId, data) => {
   if (data && userId) {
     const result = await User.findByIdAndUpdate(userId, {

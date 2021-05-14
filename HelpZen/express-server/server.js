@@ -81,6 +81,14 @@ app.post("/api/getUserById", (req, res) => {
   });
 });
 
+app.post("/api/updateUserProfile", (req, res) => {
+  const userId = req.body.userId;
+  const data = req.body.data;
+  authController.updateUserProfile(userId, data).then((result) => {
+    res.send(result);
+  });
+});
+
 app.post("/api/updatePrevSessionsForUserId", (req, res) => {
   const userId = req.body.userId;
   const data = req.body.data;

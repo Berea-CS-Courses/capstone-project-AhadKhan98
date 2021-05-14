@@ -52,6 +52,17 @@ export const getUserById = (userId) => {
     });
 };
 
+export const updateUser = (userId, data) => {
+  return axios
+    .post(API_URL + "/updateUserProfile", { userId, data })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
 /**
  * Takes in matchData object, adds the match to the 'matches' table in MongoDB, and returns the response.
  * @param matchData Object containing fields related to the match query.
