@@ -110,7 +110,11 @@ function NavBar({
               open={Boolean(anchorEl)}
               onClose={handleUserMenuClose}
             >
-              <MenuItem>Edit Profile</MenuItem>
+              <MenuItem>
+                <Link className="navbar--link" to="/edit-profile">
+                  Edit Profile
+                </Link>
+              </MenuItem>
               <MenuItem>
                 <Link className="navbar--link" to="/helper-stats">
                   Helper Stats

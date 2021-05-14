@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import ChatView from "./views/ChatView";
 import HelperStatsView from "./views/HelperStatsView";
+import EditProfileView from "./views/EditProfileView.js";
 
 import { getUserById } from "./api";
 
@@ -60,6 +61,9 @@ function App() {
           <HelperStatsView user={user} userLogoutHandler={userLogoutHandler} />
         </Route>
       </Switch>
+      <Route path="/edit-profile">
+        <EditProfileView user={user} userLogoutHandler={userLogoutHandler} />
+      </Route>
     </Router>
   );
 }
