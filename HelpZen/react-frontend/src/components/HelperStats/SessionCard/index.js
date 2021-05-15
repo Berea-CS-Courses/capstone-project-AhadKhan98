@@ -8,13 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-function SessionCard({
-  sessionNumber,
-  duration,
-  problemStatement,
-  date,
-  rating,
-}) {
+function SessionCard({ sessionNumber, problemStatement, date, rating }) {
   return (
     <>
       <Card className="helperStats--card">
@@ -23,15 +17,13 @@ function SessionCard({
             Session # {sessionNumber}
           </Typography>
           <Typography className="" variant="body2">
-            Duration: {duration}
+            Date: {date}
           </Typography>
         </CardActionArea>
         <CardContent>
-          <Typography variant="h5">Problem Statement</Typography>
           <Typography variant="body2">{problemStatement}</Typography>
         </CardContent>
         <CardActions className="helperStats--card-actions">
-          <Typography>Date: {date}</Typography>
           <Typography>Rating: {rating}/5</Typography>
         </CardActions>
       </Card>
