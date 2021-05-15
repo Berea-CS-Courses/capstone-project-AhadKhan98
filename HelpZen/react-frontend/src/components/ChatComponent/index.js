@@ -174,13 +174,16 @@ function ChatComponent({ user, session, roomId }) {
   };
 
   const renderMessages = () => {
-    const result = messages.map((msg) => {
-      return (
-        <ListItem>
-          <Message author={msg.author} message={msg.message} />
-        </ListItem>
-      );
-    });
+    const result = messages
+      .slice(0)
+      .reverse()
+      .map((msg) => {
+        return (
+          <ListItem>
+            <Message author={msg.author} message={msg.message} />
+          </ListItem>
+        );
+      });
     return result;
   };
 
