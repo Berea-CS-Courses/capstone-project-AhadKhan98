@@ -26,7 +26,7 @@ function Footer({ user, userLogoutHandler }) {
       return (
         <>
           <Typography className="footer--appBar--toolbar--leftItems--pagesText">
-            <a href="/">Edit Profile</a> |{" "}
+            <Link to="/edit-profile">Edit Profile</Link> |{" "}
             <Link to="/helper-stats">Helper Stats</Link> |{" "}
             <a onClick={userLogoutHandler}>Logout</a>
           </Typography>
