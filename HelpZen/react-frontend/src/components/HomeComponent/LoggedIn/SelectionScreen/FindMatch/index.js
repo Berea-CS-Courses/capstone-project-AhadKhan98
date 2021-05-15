@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Calls the API to find a match
  * Displays loading screen until a match has been found

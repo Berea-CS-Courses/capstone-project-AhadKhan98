@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Renders UI for chat room
  * Restricts access to only users that have been matched

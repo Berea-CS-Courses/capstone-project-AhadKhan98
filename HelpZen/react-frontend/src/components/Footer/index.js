@@ -28,7 +28,9 @@ function Footer({ user, userLogoutHandler }) {
           <Typography className="footer--appBar--toolbar--leftItems--pagesText">
             <Link to="/edit-profile">Edit Profile</Link> |{" "}
             <Link to="/helper-stats">Helper Stats</Link> |{" "}
-            <a onClick={userLogoutHandler}>Logout</a>
+            <a href="/" onClick={userLogoutHandler}>
+              Logout
+            </a>
           </Typography>
         </>
       );
@@ -45,6 +47,7 @@ function Footer({ user, userLogoutHandler }) {
 
           <div className="footer--appBar--toolbar--rightItems">
             <img
+              alt="logo"
               src={logoImg}
               className="footer--appBar--toolbar--rightItems--logoImg"
             />

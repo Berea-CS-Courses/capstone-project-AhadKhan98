@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Renders different components to facilitate the selection process
  */
@@ -20,7 +22,8 @@ function SelectionScreen({ user, userStatus }) {
 
   console.log("MATCH QUERY", matchQuery);
 
-  useEffect(() => { // Resets progress every time user status is changed
+  useEffect(() => {
+    // Resets progress every time user status is changed
     if (userStatus === "helpee") {
       setHelperScreenCount(1);
       setMatchQuery({ ...matchQuery, userStatus });
@@ -43,7 +46,8 @@ function SelectionScreen({ user, userStatus }) {
     };
 
     // Renders components based on userStatus and progress tracker
-    if (userStatus === "helper") { // user is a HELPER
+    if (userStatus === "helper") {
+      // user is a HELPER
       const renderScreen = () => {
         if (helperScreenCount === 1) {
           return (
@@ -60,12 +64,7 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helperScreenCount === 3) {
-          return (
-            <FindMatch
-              matchQuery={matchQuery}
-              user={user}
-            />
-          );
+          return <FindMatch matchQuery={matchQuery} user={user} />;
         } else {
           <Redirect to="/chat" />;
         }
@@ -81,7 +80,8 @@ function SelectionScreen({ user, userStatus }) {
           {renderScreen()}
         </div>
       );
-    } else if (userStatus === "helpee") { // user is a HELPEE
+    } else if (userStatus === "helpee") {
+      // user is a HELPEE
       const renderScreen = () => {
         if (helpeeScreenCount === 1) {
           return (
@@ -104,12 +104,7 @@ function SelectionScreen({ user, userStatus }) {
             />
           );
         } else if (helpeeScreenCount === 4) {
-          return (
-            <FindMatch
-              matchQuery={matchQuery}
-              user={user}
-            />
-          );
+          return <FindMatch matchQuery={matchQuery} user={user} />;
         } else {
           return <Redirect to="/chat" />;
         }
