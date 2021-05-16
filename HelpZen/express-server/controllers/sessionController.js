@@ -54,6 +54,7 @@ exports.createNewSession = async (sessionData) => {
  * Attaches the session object to the corresponding user object
  */
 exports.addSessionToUser = async (sessionObject, userId) => {
+  // Checks if valid data was provided
   if (sessionObject && userId) {
     const result = await User.findByIdAndUpdate(userId, {
       activeSession: sessionObject,
@@ -66,13 +67,20 @@ exports.addSessionToUser = async (sessionObject, userId) => {
       });
     return result;
   } else {
+    // Returns false if missing data provided
     return false;
   }
 };
 
+/**
+ * Takes in roomId and deletes the session object for that roomId
+ * @param roomId String
+ * @returns Response
+ */
 exports.deleteSessionUsingRoomId = async (roomId) => {
+  // Checks if valid data is entered
   if (roomId) {
-    const result = await Session.findOneAndDelete({ roomNumber: roomId })
+    const result = await Session.findOneAndDelete({ roomNumber: roomId }) // Finds session with provided roomId and deletes it
       .then((res) => {
         return true;
       })
@@ -81,13 +89,23 @@ exports.deleteSessionUsingRoomId = async (roomId) => {
       });
     return result;
   } else {
+    // Returns false if data does not exist
     return false;
   }
 };
 
+/**
+ * Takes in userId and the updated session status, and reflects the changes in the database
+ * @param userId String
+ * @param modifiedSessionStatus String
+ * @returns Response
+ */
 exports.modifySessionForUser = async ({ userId, modifiedSessionStatus }) => {
+  // Checks if userId was passed
   if (userId) {
+    // Checks if an updated session status was passed
     if (modifiedSessionStatus) {
+      // Updates the activeSession field for the user and reflects the status
       const result = await User.findByIdAndUpdate(userId, {
         "activeSession.status": modifiedSessionStatus,
       })
@@ -99,6 +117,7 @@ exports.modifySessionForUser = async ({ userId, modifiedSessionStatus }) => {
         });
       return result;
     } else {
+      // If no modified session status was provided, sets it to null
       const result = await User.findByIdAndUpdate(userId, {
         activeSession: null,
       })
@@ -111,6 +130,7 @@ exports.modifySessionForUser = async ({ userId, modifiedSessionStatus }) => {
       return result;
     }
   } else {
+    // Returns false if no userId was provided
     return false;
   }
 };
