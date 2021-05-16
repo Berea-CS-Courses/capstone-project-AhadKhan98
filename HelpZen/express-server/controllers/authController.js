@@ -75,9 +75,16 @@ exports.getUserById = async (userId) => {
   }
 };
 
+/**
+ * Takes in userId and the updated profile data and updates the user's profile
+ * @param data Object
+ * @param userId String
+ * @returns Response
+ */
 exports.updateUserProfile = async (userId, data) => {
+  // Check if data and userId was provided
   if (data && userId) {
-    const result = await User.findByIdAndUpdate(userId, { ...data })
+    const result = await User.findByIdAndUpdate(userId, { ...data }) // Finds the user by ID and updates data
       .then((res) => {
         return res;
       })
@@ -85,14 +92,24 @@ exports.updateUserProfile = async (userId, data) => {
         return false;
       });
     return result;
-  } else {
+  }
+  // Return false if missing data was provided
+  else {
     return false;
   }
 };
 
+/**
+ * Takes in userId and session data, and adds the session to the user's 'prevSessions' field
+ * @param data Object
+ * @param userId String
+ * @returns Response
+ */
 exports.updatePrevSessionsForUserId = async (userId, data) => {
+  // Checks if required data was provided
   if (data && userId) {
     const result = await User.findByIdAndUpdate(userId, {
+      // Appends session data to user's 'prevSessions' field
       $push: { prevSessions: [data] },
     })
       .then((res) => {
@@ -103,6 +120,7 @@ exports.updatePrevSessionsForUserId = async (userId, data) => {
       });
     return result;
   } else {
+    // Returns false if missing data was passed
     return false;
   }
 };
