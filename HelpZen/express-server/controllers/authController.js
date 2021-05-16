@@ -20,16 +20,13 @@ exports.registerNewUser = async (userData) => {
     const result = await newUser
       .save() // Save the User to MongoDB
       .then((user) => {
-        console.log("saved new user");
         return user; // Return user object if successful
       })
       .catch((err) => {
-        console.log("unable to save new user");
         return false; // Return false if an error occurred
       });
     return result; // Rerturn the result after trying to save to MongoDB
   } else {
-    console.log("user data incorrect");
     return false; // Return false if userData incorrect or missing fields
   }
 };
@@ -64,7 +61,7 @@ exports.getUserById = async (userId) => {
   if (userId) {
     const findUserInDb = await User.findById(userId) // Stores result from trying to find user in MongoDB with provided user id.
       .exec()
-      .catch(() => console.log("could not find user"));
+      .catch(() => {});
     if (!findUserInDb) {
       return false; // Return false if user not found or error occurred.
     } else {

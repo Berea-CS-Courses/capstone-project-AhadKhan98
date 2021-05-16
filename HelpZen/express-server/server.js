@@ -217,7 +217,6 @@ io.on("connection", (socket) => {
     if (numClients[globalRoom] === 0) {
       delete numClients[globalRoom];
     }
-    console.log("User disconnected emit to room", globalRoom);
     socket.to(globalRoom).emit("displayMessage");
   });
 

@@ -22,7 +22,6 @@ function LoggedIn({ user, userLogoutHandler }) {
     }
   };
 
-  console.log("User Status Is", userStatus);
   return (
     <div className="home--loggedIn--container">
       <NavBar
