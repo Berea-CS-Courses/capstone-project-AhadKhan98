@@ -41,7 +41,6 @@ function RegisterModal({ open, handleToggle, userLoginHandler }) {
           }
         })
         .catch((err) => {
-          console.log("Error occurred!");
           setErrorMessage("An unexpected error occurred."); // Displays error if database encounters an unexpected error.
         });
     } else {

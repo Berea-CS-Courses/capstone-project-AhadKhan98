@@ -39,10 +39,8 @@ function FindMatch({ user, matchQuery }) {
 
     addMatchToDbAsync().then((currentMatchObject) => {
       interval = setInterval(() => {
-        console.log("Trying to find match..");
         findMatchForId({ matchId: currentMatchObject._id }).then((response) => {
           if (response.data) {
-            console.log("Found Match");
             clearInterval(interval);
             setMatchFound(response.data);
           }
