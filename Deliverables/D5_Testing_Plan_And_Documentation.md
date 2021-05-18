@@ -1,104 +1,41 @@
-# Section 1: Proof of Concept
+# Overview
 
-To demonstrate the proof of concept, two separate entities are created, the frontend in React and the backend in Node JS. Following the creation, a connection is established between the two to ensure the transfer of data.
+In order to test the complete web-application, I decided to use a two step approach. Since the backend and the frontend can function independently, I decided to use unit testing for the backend to test for routes and test the response for varying forms of input. And for the front-end I went with a cognitive walkthrough approach where my application was put infront of 3 different people, and their interactions were recorded.
 
-<img src="./d4_assets/proof-of-concept/project_dir.PNG" /> <br>
-_Project structure for frontend and backend._
-<br><br>
+# Testing The Backend: Unit Testing
 
-## React Frontend
+# Testing The Frontend: Cognitive Walkthrough
 
-<img src="./d4_assets/proof-of-concept/project_dir_react.PNG" /><br>
-_Project structure for frontend_
-<br><br>
+Since the web-application has a bunch of different features that the user can engage in, using a cognitive walkthrough would be suitable in order to identify how users interact with the system and whether it confuses them or not.
 
-<img src="./d4_assets/proof-of-concept/react_code.PNG" height="300px"/><br>
-_Code for connecting to the server, and sending/receiving messages_
-<br><br>
+The users were asked to perform the tasks below in order. Instrucions on how to achieve the tasks is also given below.
 
-<img src="./d4_assets/proof-of-concept/react_start_command.PNG" height="200px"/><br>
-_Running the react frontend on localhost using command prompt_
-<br><br>
+1. Register for a new account  
+   **Instructions:** _The user should click on the button that says "Register" on the top right side of the page. Then the user should fill out the form with their information and press the "Sign Up" button._
 
-<img src="./d4_assets/proof-of-concept/react_ui.PNG" height="200px"/><br>
-_Result of the code in the screenshot above._
-<br><br>
+2. Ask for help in "web development" and "javascript"  
+   **Instructions:** _The user should make sure that the toggle button is pointing towards "Get Help". After that the user should click on the icon that says "Web Development". On the next screen, the user should select the icon for "javascript" and proceed to fill out the problem statement._
 
-<img src="./d4_assets/proof-of-concept/react_user1.PNG" height="200px"/><img src="./d4_assets/proof-of-concept/react_user2.PNG" height="200px"/><br>
-_Users can send messages, and all devices connected to the server will be able to view it in real-time._
-<br><br>
+3. Send any message to the person that you got matched with  
+   **Instructions:** _The user should click on the empty textbox at the bottom of the screen and type a message. After that the user should either press the "Send" button or press the "Enter" key and the message will be sent._
 
-## NodeJS Backend
+4. End the session with the matched user  
+   **Instructions:** _The user should simply press the red button on the top right side of the screen that says "End Session". This will cause the session to immediately end._
 
-<img src="./d4_assets/proof-of-concept/project_dir_server.PNG" /><br>
-_Project structure for server_
-<br><br>
+5. Rate the previous session  
+   **Instructions:** _The user should select the number of stars that they think the previous session should deserve. After making a selection, they should simply press the submit button._
 
-<img src="./d4_assets/proof-of-concept/server_code.PNG" height="200px"/><br>
-_Code for starting up the server and allowing devices to connect_
-<br><br>
+6. Offer help in "web development" and "javascript"  
+   **Instructions:** _At this point if the user performed the previous steps successfuly, the user would be at the home screen. From here the user needs to toggle the switch to "Offer Help" and proceed to making the selections on "Web Development" and "JavaScript". Once the loading bar is displayed, the task is complete._
 
-<img src="./d4_assets/proof-of-concept/server_start_command.PNG" height="100px"/><br>
-_Starting up the server on localhost using a command prompt_
-<br><br>
+7. View your helper stats  
+   **Instructions:** _The user should press the box on the top right that has their name on it. This will open up a drop down menu from which the "Helper Stats" option should be selected. Once the selection is made, the user's previous help sessions will be shown._
 
-<img src="./d4_assets/proof-of-concept/server_browser.PNG" height="200px"/><br>
-_Viewing server in the browser_
-<br><br>
+8. Change your email address to something else  
+   **Instructions:** _The user should press the box on the top right that has their name on it. This will open up a drop down menu from which the "Edit Profile" option should be selected. Once the selection is made, the user needs to enter a new email address in the field and not enter any other information. Press the update button next._
 
-## Communication Between The Two
+9. Logout of the system  
+   **Instructions:** _The user should press the box on the top right that has their name on it. This will open up a drop down menu from which the "Logout" option should be selected. Thepage will reload and the user will not be logged in anymore._
 
-<img src="./d4_assets/proof-of-concept/server_connection.PNG" height="150px"/><br>
-_Everytime a user opens the frontend, the backend establishes a socket connection and displays the connection id._
-<br><br>
-
-# Section 2: Concept Documentation
-
-## Requirements
-
-In order to run the code contained in this project, you need to have NodeJS installed on your system. This will allow you to install other JavaScript dependencies that the project uses. Additionally, you need to install Yarn which is a package manager that this project uses.
-
-Dependencies:
-
-- React
-- Express
-- Cors
-- Nodemon
-- Socket.io
-- Socket.io-client
-
-## Instructions
-
-The first and the most important step is to install NodeJS and Yarn on your system.  
-To get started, visit the official website for NodeJS: [Offical Website](https://nodejs.org/en/) and follow the steps to install NodeJS on your system.  
-To check if your installation was successful, run the following command in the command prompt: `node -v`. If you see a version, you have successfully installed NodeJS on your system.
-
-The next step is to install Yarn (package manager) to easily install all the dependencies that the project contains later on. To get started, open up a command prompt window and type the following command: `npm install --global yarn`. Once again, to verify the installation, type the following command: `yarn --version`. If you see a version, you have successfully installed yarn.
-
-Now, clone the repo and follow the instructions below to start up the server and the frontend.
-
-**Starting the Server**
-
-1. Move into the following directory: `HelpZen/express-server`
-2. Run the following command to install dependencies: `yarn install`
-3. Run the following command to start the server: `yarn start`
-4. To view the server visit http://localhost:8000/ on your browser.
-
-**Starting the Frontend**
-
-1. Move into the following directory: `HelpZen/react-frontend`
-2. Run the following command to install dependencies: `yarn install`
-3. Run the following command to start the server: `yarn start`
-4. Your browser should open up automatically with the user interface displayed on it.
-
-## Functionality
-
-This proof-of-concept allows the user to run the backend and the frontend independently on their machine. It allows provides the functionality for the users to be able to view the backend as well as the frontend on the browser at the same time. Additionally, the functionality to communicate between the two entities is also present. Multiple users can communicate with each other using global chat, which works using socket connections.
-
-# Section 3: Updates
-
-I have not made any changes to the project idea during the process. The project idea has stayed the same all throughout my deliverables. Therefore, there are no changes that need to be reflected in this section.
-
-# Section 4: Reflection
-
-Now that I have a working proof-of-concept, I feel even more confident in being able to implement the project. So far, I haven't really faced any major challenges or roadblocks and everything is sailing smoothly.
+10. Log back in  
+    **Instructions:** _The user should press the button on the top-right panel that says "Login". The user should then enter the e-mail and password that they used previously to register with the system. If all goes well, the user will get logged back into the system._
