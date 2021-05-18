@@ -53,6 +53,27 @@ exports.loginUser = async (userData) => {
 };
 
 /**
+ * Takes in userId and deletes the user from MongoDb
+ * @param userId String
+ * @returns Response
+ */
+exports.deleteUser = async (userId) => {
+  if (userId) {
+    // Check if userData contains necessary fields
+    const result = User.findByIdAndDelete(userId)
+      .then((res) => {
+        return true;
+      })
+      .catch((err) => {
+        return false;
+      });
+    return result;
+  } else {
+    return false;
+  }
+};
+
+/**
  * Takes in userId string, and finds a user with that id in MongoDB.
  * @param userId String
  * @returns Response
@@ -105,10 +126,14 @@ exports.updateUserProfile = async (userId, data) => {
 exports.updatePrevSessionsForUserId = async (userId, data) => {
   // Checks if required data was provided
   if (data && userId) {
-    const result = await User.findByIdAndUpdate(userId, {
-      // Appends session data to user's 'prevSessions' field
-      $push: { prevSessions: [data] },
-    })
+    const result = await User.findByIdAndUpdate(
+      userId,
+      {
+        // Appends session data to user's 'prevSessions' field
+        $push: { prevSessions: [data] },
+      },
+      { new: true }
+    )
       .then((res) => {
         return res;
       })
