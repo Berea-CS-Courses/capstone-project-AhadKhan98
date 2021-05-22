@@ -31,9 +31,7 @@ function ChatView(props) {
     };
     createNewSession({ sessionData: sessionData }).then((res) => {
       const sessionObjectFromDB = res.data;
-      addSessionToUser(sessionObjectFromDB, user._id).then((res) => {
-        console.log("SESSION ADD STATUS:", res);
-      });
+      addSessionToUser(sessionObjectFromDB, user._id).then((res) => {});
     });
   };
   createSessionAndAddToUser();

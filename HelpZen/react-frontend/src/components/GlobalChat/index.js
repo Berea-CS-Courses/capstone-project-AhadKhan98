@@ -13,7 +13,6 @@ function GlobalChat() {
 
   socket.on("RECEIVE_MESSAGE", (data) => {
     setMessages([...messages, data]);
-    console.log(messages);
   });
 
   const sendMessage = (e) => {

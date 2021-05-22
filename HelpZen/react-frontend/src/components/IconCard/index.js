@@ -17,12 +17,17 @@ function IconCard({ technology, onClick }) {
   return (
     <Card
       onClick={handleCardClick}
-      className={`iconCard--card ${ // add class if card is selected for additional styling
+      className={`iconCard--card ${
+        // add class if card is selected for additional styling
         cardSelected ? "iconCard--card--selected" : null
       }`}
     >
       <CardContent>
-        <img className="iconCard--img" src={technology.icon} />
+        <img
+          alt="technology icon"
+          className="iconCard--img"
+          src={technology.icon}
+        />
         <Typography className="iconCard--title">{technology.name}</Typography>
       </CardContent>
     </Card>

@@ -10,7 +10,6 @@ import Footer from "../../Footer";
 
 import BlockOne from "./BlockOne";
 import BlockTwo from "./BlockTwo";
-import BlockThree from "./BlockThree";
 
 import LoginModal from "../../Modals/LoginModal";
 import RegisterModal from "../../Modals/RegisterModal";
@@ -50,7 +49,6 @@ function LoggedOut({ user, userLoginHandler }) {
       <div className="home--loggedOut--contentArea">
         <BlockOne />
         <BlockTwo handleRegisterModalToggle={handleRegisterModalToggle} />
-        <BlockThree />
         <Footer />
       </div>
     </div>

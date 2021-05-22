@@ -18,11 +18,11 @@ function LoginModal({ open, handleToggle, userLoginHandler }) {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // Verifies that the formData is correct and calls API to log the user in 
+  // Verifies that the formData is correct and calls API to log the user in
   const handleLoginButtonClick = () => {
-    if (formData.email && formData.password) { // Checks for complete fields
+    if (formData.email && formData.password) {
+      // Checks for complete fields
       loginUser(formData).then((response) => {
-        console.log("RESPONSE", response);
         if (response.data) {
           userLoginHandler(response.data); // Updates user object if a user was returned
         } else {
@@ -30,7 +30,7 @@ function LoginModal({ open, handleToggle, userLoginHandler }) {
         }
       });
     } else {
-      setErrorMessage("Please fill out all the fields."); // Displays error message since form had incomplete data 
+      setErrorMessage("Please fill out all the fields."); // Displays error message since form had incomplete data
     }
   };
 

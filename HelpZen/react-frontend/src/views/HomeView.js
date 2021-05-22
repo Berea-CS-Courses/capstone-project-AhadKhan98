@@ -8,12 +8,15 @@ import { Redirect } from "react-router-dom";
 import LoggedIn from "../components/HomeComponent/LoggedIn";
 import LoggedOut from "../components/HomeComponent/LoggedOut";
 import LeaveReview from "../components/HomeComponent/LoggedIn/LeaveReview";
-import { modifySessionForUser } from "../api";
 
 function HomeView({ user, userLoginHandler, userLogoutHandler }) {
-  let componentToRender = null;
+  let componentToRender = null; // Determines the component that needs to be rendered
+
+  // Checks if a user is logged in
   if (user) {
+    // Checks if the user has an active session
     if (user.activeSession?.status === "active") {
+      // If the user has an active session, redirects to the chat component
       componentToRender = (
         <Redirect
           to={{
@@ -27,17 +30,17 @@ function HomeView({ user, userLoginHandler, userLogoutHandler }) {
         />
       );
     } else if (user.activeSession?.status === "pending") {
+      // If the user needs to leave a review, renders the leave review component
       componentToRender = <LeaveReview user={user} />;
     } else {
-      console.log("USER DOES NOT HAVE AN ACTIVE SESSION");
+      // If the user does not have an active session, renders the LoggedIn component
       componentToRender = (
         <LoggedIn user={user} userLogoutHandler={userLogoutHandler} />
       );
     }
-    // Set componentToRender to be LoggedIn component if user exists
   } else {
+    // Set componentToRender to be LoggedOut component if user does not exist
     componentToRender = (
-      // Set componentToRender to be LoggedOut component if user does not exist
       <LoggedOut user={user} userLoginHandler={userLoginHandler} />
     );
   }

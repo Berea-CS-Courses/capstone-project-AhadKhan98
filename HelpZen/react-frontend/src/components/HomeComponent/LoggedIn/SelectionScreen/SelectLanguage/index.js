@@ -51,6 +51,7 @@ function SelectLanguage({ userStatus, updateScreenAndUpdateState }) {
           <>
             {data.map((language) => (
               <IconCard
+                key={language.value}
                 onClick={() => handleCardClick(language.value)}
                 technology={language}
               />

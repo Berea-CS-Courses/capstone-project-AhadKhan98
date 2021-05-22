@@ -17,6 +17,7 @@ function BlockOne() {
       </div>
       <div className="home--loggedOut--contentArea--block1--rightItems">
         <img
+          alt="technology graphics"
           className="home--loggedOut--contentArea--block1--rightItems--image"
           src={firstblockImg}
         />
