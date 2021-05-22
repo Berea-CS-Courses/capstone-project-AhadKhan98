@@ -74,9 +74,7 @@ function NavBar({
       // If user is logged in, renders the user's name, along with toggle button to allow switching between 'helper' and 'helpee' mode.
       return (
         <>
-          {screen ? ( // Does not render toggle button if not on the home screen
-            null
-          ) : (
+          {screen ? null : ( // Does not render toggle button if not on the home screen
             <>
               <div className="navBar--appBar--rightItems--userStatus">
                 <Typography>Get Help</Typography>
@@ -131,13 +129,13 @@ function NavBar({
       <AppBar className="navBar--appBar" position="static">
         <Toolbar>
           <div className="navBar--appBar--leftItems">
-            <Link to="/">
+            <a href="/">
               <img
                 className="navBar--logoImg"
                 src={logoImg}
                 alt="helpzen logo"
               />
-            </Link>
+            </a>
           </div>
           <div className="navBar--appBar--rightItems">{renderRightItems()}</div>
         </Toolbar>

@@ -1,0 +1,25 @@
+.leaveReview--form--container {
+  height: 73vh !important;
+}
+
+.leaveReview--form {
+  height: 50% !important;
+  background-color: rgba(211, 211, 211, 0.418);
+  width: 50%;
+  margin: 50px auto;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating-stars {
+  font-size: 4rem !important;
+}
+
+.leaveReview--button {
+  margin-top: 30px !important;
+}

@@ -4,7 +4,6 @@ const API_URL = "http://localhost:8000/api"; // TODO: Change the url after deplo
 
 /* Contains all functions necessary to fetch data from the helpzen backend express server. */
 
-
 /**
  * Takes in a userData object, adds the user to MongoDB, and returns the response.
  * @param userData Object containing data related to user. Must contain firstName, lastName, email and password fields.
@@ -36,7 +35,6 @@ export const loginUser = (userData) => {
       return err;
     });
 };
-
 
 /**
  * Takes in a userId, checks to see if a user exists in MongoDB, and returns the response.
@@ -77,14 +75,14 @@ export const addMatchQueryToDb = (matchData) => {
  */
 export const findMatchForId = (matchId) => {
   return axios
-  .post(API_URL + "/findMatchForId", matchId)
-  .then((response) => {
-    return response
-  })
-  .catch(err => {
-    return err;
-  })
-}
+    .post(API_URL + "/findMatchForId", matchId)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
 
 /**
  * Takes in match id and delete the object from MongoDB
@@ -93,11 +91,44 @@ export const findMatchForId = (matchId) => {
  */
 export const deleteMatchById = (matchId) => {
   return axios
-  .post(API_URL + "/deleteMatchById", matchId)
-  .then(response => {
-    return response
-  }) 
-  .catch((err) => {
-    return err;
-  })
-}
+    .post(API_URL + "/deleteMatchById", matchId)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+export const createNewSession = (sessionData) => {
+  return axios
+    .post(API_URL + "/createNewSession", sessionData)
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+export const addSessionToUser = (sessionObject, userId) => {
+  return axios
+    .post(API_URL + "/addSessionToUser", { sessionObject, userId })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+export const modifySessionForUser = (userId, updatedSessionStatus) => {
+  return axios
+    .post(API_URL + "/modifySessionForUser", { userId, updatedSessionStatus })
+    .then((response) => {
+      return response;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

@@ -2,11 +2,11 @@
  * Gets necessary data to render ChatComponent
  * Renders ChatComponent and sends required data
  */
-import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
-import { deleteMatchById } from "../api";
+import React from "react";
 
 import ChatComponent from "../components/ChatComponent";
+
+import { createNewSession, addSessionToUser } from "../api";
 
 function ChatView(props) {
   const session = props.location.session; // Gets session object form data being passed via props
@@ -20,19 +20,23 @@ function ChatView(props) {
   }
 
   /**
-   * Deletes both of the match objects from MongoDB
+   * Takes the session object passed via props
+   * Calls the API to create a new session object in DB
+   * Attaches the newly created session to user's activeSession field in the DB
    */
-  // const deleteMatchesFromDb = () => {
-  //   const matchObject1 = session.currentMatchQuery;
-  //   const matchObject2 = session.matchFound;
-
-  //   deleteMatchById({matchId: matchObject1._id}) // Calls API to delete the match object and waits for a response
-  //   .then((res) => console.log("MatchObject1 Deletion Status: ", res.data));
-
-  //   deleteMatchById({matchId: matchObject2._id}) // Calls API to delete the match object and waits for a response
-  //   .then((res) => console.log("MatchObject1 Deletion Status: ", res.data));
-  // }
-  // deleteMatchesFromDb();
+  const createSessionAndAddToUser = () => {
+    const sessionData = {
+      ...session,
+      roomNumber: `${props.match.params.helpeeId}/${props.match.params.helperId}`,
+    };
+    createNewSession({ sessionData: sessionData }).then((res) => {
+      const sessionObjectFromDB = res.data;
+      addSessionToUser(sessionObjectFromDB, user._id).then((res) => {
+        console.log("SESSION ADD STATUS:", res);
+      });
+    });
+  };
+  createSessionAndAddToUser();
 
   return (
     <div>
