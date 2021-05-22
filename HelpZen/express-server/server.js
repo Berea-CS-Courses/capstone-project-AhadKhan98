@@ -3,6 +3,14 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 require("dotenv").config();
 
+// Function to create server without running it
+const createServer = () => {
+  const app = express();
+  app.use(express.json());
+  app.use(cors());
+  return app;
+};
+
 // Configure middlewares
 const http = require("http").createServer(app);
 const cors = require("cors"); // Allows Cross-Origin Resource Sharing
@@ -24,7 +32,13 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then(() => console.log("Established connection to MongoDB"))
+  .then(() => {
+    console.log("Established connection to MongoDB");
+    // Listens on the port provided by the host machine or 8000.
+    http.listen(PORT, () => {
+      console.log(`HelpZen backend server running on port: ${PORT}`);
+    });
+  })
   .catch((err) => console.log("Failed to connect to Mongo DB. Error: ", err));
 
 // GET Requests
@@ -35,6 +49,18 @@ app.get("/", (req, res) => {
 });
 
 // POST Requests
+
+/**
+ * Takes user ID from the request
+ * Deletes the user from mongodb
+ * Sends back the response
+ */
+app.post("/api/deleteUser", (req, res) => {
+  const userId = req.body.userId;
+  authController.deleteUser(userId).then((result) => {
+    res.send(result);
+  });
+});
 
 /**
  * Takes user data from the request
@@ -252,7 +278,4 @@ io.on("connection", (socket) => {
   });
 });
 
-// Listens on the port provided by the host machine or 8000.
-http.listen(PORT, () => {
-  console.log(`HelpZen backend server running on port: ${PORT}`);
-});
+module.exports = createServer;

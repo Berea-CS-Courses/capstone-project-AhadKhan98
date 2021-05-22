@@ -13,9 +13,9 @@ const User = require("../models/User");
 exports.createNewSession = async (sessionData) => {
   // Verify correct data is being passed
   if (
-    sessionData.currentMatchQuery &&
-    sessionData.matchFound &&
-    sessionData.roomNumber
+    sessionData?.currentMatchQuery &&
+    sessionData?.matchFound &&
+    sessionData?.roomNumber
   ) {
     // Check if session with the room number already exists
     const sessionWithSameRoomNumber = await Session.findOne({
@@ -56,9 +56,13 @@ exports.createNewSession = async (sessionData) => {
 exports.addSessionToUser = async (sessionObject, userId) => {
   // Checks if valid data was provided
   if (sessionObject && userId) {
-    const result = await User.findByIdAndUpdate(userId, {
-      activeSession: sessionObject,
-    })
+    const result = await User.findByIdAndUpdate(
+      userId,
+      {
+        activeSession: sessionObject,
+      },
+      { new: true }
+    )
       .then((res) => {
         return res;
       })
